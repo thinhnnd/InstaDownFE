@@ -1,0 +1,18 @@
+$breakpoint-tablet: 768px;
+@media (min-width: $breakpoint-tablet) {
+  .instadown {
+      .title-brand {
+          min-width: 680px;
+      }
+  }
+
+  
+    //thinhnnd 
+    #search-input {
+      padding: 25px 10px;
+      font-size: 20px;
+  }
+}
+
+
+

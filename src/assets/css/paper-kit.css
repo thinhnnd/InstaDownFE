@@ -1461,6 +1461,9 @@
     font-size: .875rem;
     line-height: 1.5;
     height: 31px; }
+  .form-control#search-input {
+    padding: 25px 10px;
+    font-size: 20px; }
 
 .has-error .form-control-feedback, .has-error .control-label {
   color: #f5593d; }
@@ -4543,7 +4546,7 @@ License - nucleoapp.com/license/
     min-height: 40vh !important; }
   .page-header.section-dark .content-center,
   .page-header.section-dark .category-absolute {
-    z-index: 1; }
+    z-index: 2; }
 
 .page-header .motto {
   text-align: left;
@@ -5720,6 +5723,10 @@ License - nucleoapp.com/license/
   .presentation-page .section-content .image-container .area-img {
     max-width: 170px !important; } }
 
+@media (min-width: 768px) {
+  .instadown .title-branch {
+    min-width: 730px; } }
+
 /*! nouislider - 11.1.0 - 2018-04-02 11:18:13 */
 /* Functional styling;
 * These styles are required for noUiSlider to function.
@@ -6457,5 +6464,3 @@ td.rdtYear:hover {
   top: 1px;
   border-width: 0 .4rem .4rem .4rem;
   border-bottom-color: #fff; }
-
-/*# sourceMappingURL=paper-kit.css.map */

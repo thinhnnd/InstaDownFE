@@ -23,7 +23,7 @@ import React from "react";
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import IndexHeader from "components/Headers/IndexHeader.js";
-import DemoFooter from "components/Footers/DemoFooter.js";
+import MainFooter from "components/Footers/MainFooter.js";
 
 // index sections
 import SectionButtons from "views/index-sections/SectionButtons.js";
@@ -49,13 +49,13 @@ function Index() {
     };
   });
   return (
-    <>
+    <div className="instadown">
       <IndexNavbar />
       <IndexHeader />
       <div className="main">
-        <SectionButtons />
-        <SectionNavbars />
-        <SectionNavigation />
+        {/* <SectionButtons />
+        <SectionNavbars /> */}
+        {/* <SectionNavigation />
         <SectionProgress />
         <SectionNotifications />
         <SectionTypography />
@@ -64,11 +64,11 @@ function Index() {
         <SectionNucleoIcons />
         <SectionDark />
         <SectionLogin />
-        <SectionExamples />
-        <SectionDownload />
-        <DemoFooter />
+        <SectionExamples /> */}
+        {/* <SectionDownload /> */}
+        <MainFooter />
       </div>
-    </>
+    </div>
   );
 }
 

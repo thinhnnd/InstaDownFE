@@ -71,7 +71,7 @@ function IndexNavbar() {
             target="_blank"
             title="Coded by Creative Tim"
           >
-            Paper Kit React
+            InstaDown
           </NavbarBrand>
           <button
             aria-expanded={navbarCollapse}
@@ -137,22 +137,19 @@ function IndexNavbar() {
             </NavItem>
             <NavItem>
               <NavLink
-                href="https://demos.creative-tim.com/paper-kit-react/#/documentation?ref=pkr-index-navbar"
+                href="https://github.com/thinhnnd"
                 target="_blank"
               >
-                <i className="nc-icon nc-book-bookmark" /> Documentation
+                <i className="nc-icon nc-book-bookmark" /> About Us
               </NavLink>
             </NavItem>
             <NavItem>
-              <Button
-                className="btn-round"
-                color="danger"
-                href="#pablo"
+              <NavLink
+                href="https://demos.creative-tim.com/paper-kit-react/#/documentation?ref=pkr-index-navbar"
                 target="_blank"
-                disabled
               >
-                Upgrade to Pro
-              </Button>
+                <i className="nc-icon nc-book-bookmark" /> How to use
+              </NavLink>
             </NavItem>
           </Nav>
         </Collapse>
