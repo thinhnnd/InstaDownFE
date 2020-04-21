@@ -4,15 +4,19 @@ $breakpoint-tablet: 768px;
       .title-brand {
           min-width: 680px;
       }
+      .page-header {
+        min-height: calc(100vh - 150px)
+      }
   }
-
-  
     //thinhnnd 
     #search-input {
       padding: 25px 10px;
       font-size: 20px;
   }
+
+  
 }
+
 
 
 
