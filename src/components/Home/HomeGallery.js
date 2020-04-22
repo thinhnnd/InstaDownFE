@@ -131,7 +131,7 @@ function HomeGallery() {
       ];
       
       // Convert array to JSX items
-      items = items.map(function(item) {
+      items = photos.map(function(item) {
         return <div key={item.id}><img src={item.image} /></div>
       });
     return (
