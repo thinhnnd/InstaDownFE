@@ -9,10 +9,10 @@ export const data = {
       {
         src: 'https://source.unsplash.com/2ShvY8Lf6l0/800x599',
         width: 800,
-        height: 599,
+        height: 600,
         thumbnail: 'https://source.unsplash.com/2ShvY8Lf6l0/800x599',
-        countComment: 100,
-        countLike: 1000,
+        countcomment: 100,
+        countlike: 1000,
         shortcode: 'short-code of  pic'
       },
       {
@@ -20,8 +20,8 @@ export const data = {
         width: 800,
         height: 799,
         thumbnail: 'https://source.unsplash.com/Dm-qxdynoEc/800x799',
-        countComment: 100,
-        countLike: 1000,
+        countcomment: 100,
+        countlike: 1000,
         shortcode: 'short-code of  pic'
       },
       {
@@ -29,8 +29,8 @@ export const data = {
         width: 4,
         height: 3,
         thumbnail: 'https://source.unsplash.com/qDkso9nvCg0/600x799',
-        countComment: 100,
-        countLike: 1000,
+        countcomment: 100,
+        countlike: 1000,
         shortcode: 'short-code of  pic'
       },
       {
@@ -38,17 +38,8 @@ export const data = {
         width: 600,
         height: 799,
         thumbnail: 'https://source.unsplash.com/iecJiKe_RNg/600x799',
-        countComment: 100,
-        countLike: 1000,
-        shortcode: 'short-code of  pic'
-      },
-      {
-        src: 'https://cdn.pixabay.com/photo/2020/04/09/19/19/cartoon-doctor-5022797_1280.jpg',
-        width: 597,
-        height: 673,
-        thumbnail: 'https://source.unsplash.com/2ShvY8Lf6l0/800x599',
-        countComment: 100,
-        countLike: 158,
+        countcomment: 100,
+        countlike: 1000,
         shortcode: 'short-code of  pic'
       },
       {
@@ -56,8 +47,8 @@ export const data = {
         width: 600,
         height: 799,
         thumbnail: 'https://source.unsplash.com/epcsn8Ed8kY/600x799',
-        countComment: 100,
-        countLike: 1000,
+        countcomment: 100,
+        countlike: 1000,
         shortcode: 'short-code of  pic'
       },
       {
@@ -65,8 +56,8 @@ export const data = {
         width: 800,
         height: 599,
         thumbnail: 'https://source.unsplash.com/NQSWvyVRIJk/800x599',
-        countComment: 100,
-        countLike: 500,
+        countcomment: 100,
+        countlike: 500,
         shortcode: 'short-code of  pic'
       },
       {
@@ -74,8 +65,8 @@ export const data = {
         width: 600,
         height: 799,
         thumbnail: 'https://source.unsplash.com/zh7GEuORbUw/600x799',
-        countComment: 100,
-        countLike: 420,
+        countcomment: 100,
+        countlike: 420,
         shortcode: 'short-code of  pic'
       },
       {
@@ -83,8 +74,8 @@ export const data = {
         width: 800,
         height: 599,
         thumbnail: 'https://source.unsplash.com/PpOHJezOalU/800x599',
-        countComment: 100,
-        countLike: 1000,
+        countcomment: 100,
+        countlike: 1000,
         shortcode: 'short-code of  pic'
       },
       {
@@ -92,17 +83,8 @@ export const data = {
         width: 4,
         height: 4,
         thumbnail: 'url of thumbnail',
-        countComment: 100,
-        countLike: 352,
-        shortcode: 'short-code of  pic'
-      },
-      {
-        src: 'https://source.unsplash.com/2ShvY8Lf6l0/800x599',
-        width: 800,
-        height: 599,
-        thumbnail: 'https://source.unsplash.com/I1ASdgphUH4/800x599',
-        countComment: 100,
-        countLike: 1000,
+        countcomment: 100,
+        countlike: 352,
         shortcode: 'short-code of  pic'
       },
       {
@@ -110,17 +92,8 @@ export const data = {
         width: 597,
         height: 673,
         thumbnail: 'https://source.unsplash.com/2ShvY8Lf6l0/800x599',
-        countComment: 100,
-        countLike: 158,
-        shortcode: 'short-code of  pic'
-      },
-      {
-        src: 'https://source.unsplash.com/2ShvY8Lf6l0/800x599',
-        width: 800,
-        height: 599,
-        thumbnail: 'https://source.unsplash.com/2ShvY8Lf6l0/800x599',
-        countComment: 100,
-        countLike: 696,
+        countcomment: 100,
+        countlike: 158,
         shortcode: 'short-code of  pic'
       },
       {
@@ -128,8 +101,8 @@ export const data = {
         width: 960,
         height: 720,
         thumbnail: 'url of thumbnail',
-        countComment: 100,
-        countLike: 748,
+        countcomment: 100,
+        countlike: 748,
         shortcode: 'short-code of  pic'
       },
       {
@@ -137,8 +110,8 @@ export const data = {
         width: 720,
         height: 960,
         thumbnail: 'url of thumbnail',
-        countComment: 100,
-        countLike: 1000,
+        countcomment: 100,
+        countlike: 1000,
         shortcode: 'short-code of  pic'
       },
       {
@@ -146,8 +119,8 @@ export const data = {
         width: 1,
         height: 1,
         thumbnail: 'url of thumbnail',
-        countComment: 100,
-        countLike: 2056,
+        countcomment: 100,
+        countlike: 2056,
         shortcode: 'short-code of  pic'
       }
     ]

@@ -1,16 +1,15 @@
 import React from "react";
 import MainFooter from "components/Footers/MainFooter.js";
 import DefaultNavbar from "components/Navbars/DefaultNavbar";
-import Img from 'react-image';
+// import Img from 'react-image';
 
 import {
     Container,
     Row,
-    Button,
+//    Button,
     Col
 } from "reactstrap";
 
-import { useParams } from "react-router-dom"
 
 function SingleImagePage(props) {
     let  link = props.match.params.link; 
