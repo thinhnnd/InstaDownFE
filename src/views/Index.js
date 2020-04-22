@@ -22,6 +22,7 @@ import React from "react";
 
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
+import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
 import IndexHeader from "components/Headers/IndexHeader.js";
 import MainFooter from "components/Footers/MainFooter.js";
 
@@ -52,7 +53,7 @@ function Index() {
   });
   return (
     <div className="instadown">
-      <IndexNavbar />
+      <DefaultNavbar />
       <IndexHeader />
       <div className="main">
         {/* <SectionButtons />

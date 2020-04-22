@@ -37,8 +37,10 @@ import {
 
 // core components
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
+import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
 import LandingPageHeader from "components/Headers/LandingPageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
+import MainFooter from "components/Footers/MainFooter";
 
 function LandingPage() {
   document.documentElement.classList.remove("nav-open");
@@ -49,8 +51,8 @@ function LandingPage() {
     };
   });
   return (
-    <>
-      <ExamplesNavbar />
+    <div className="instadown">
+      <DefaultNavbar />
       <LandingPageHeader />
       <div className="main">
         <div className="section text-center">
@@ -361,8 +363,8 @@ function LandingPage() {
           </Container>
         </div>
       </div>
-      <DemoFooter />
-    </>
+      <MainFooter />
+    </div>
   );
 }
 

@@ -38,6 +38,8 @@ import {
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
+import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
+import MainFooter from "components/Footers/MainFooter";
 
 function ProfilePage() {
   const [activeTab, setActiveTab] = React.useState("1");
@@ -56,8 +58,8 @@ function ProfilePage() {
     };
   });
   return (
-    <>
-      <ExamplesNavbar />
+    <div className="instadown">
+      <DefaultNavbar />
       <ProfilePageHeader />
       <div className="section profile-content">
         <Container>
@@ -191,8 +193,8 @@ function ProfilePage() {
           </TabContent>
         </Container>
       </div>
-      <DemoFooter />
-    </>
+      <MainFooter />
+    </div>
   );
 }
 

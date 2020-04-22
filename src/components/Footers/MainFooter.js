@@ -47,15 +47,18 @@ function MainFooter() {
               </li>
               <li>
                 <a
-                  href="/about"
-                  target="_blank"
+                  href="/profile-page"
+                  target=""
                 >
                   About us
                 </a>
               </li>
             </ul>
           </nav>
-          <div className="credits ml-auto">
+          <div className="teacher-credits">
+            <span>A product of <a href="https://dungtran.top" target="_blank">dungtran.top</a></span>
+          </div>
+          <div className="credits">
             <span className="copyright">
               © {new Date().getFullYear()}, made with{" "}
               <i className="fa fa-heart heart" /> by Group 08

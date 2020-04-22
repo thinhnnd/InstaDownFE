@@ -25,6 +25,14 @@ $breakpoint-tablet: 768px;
 }
 }
 
+.instadown {
+  .footer .container .row{
+    justify-content: space-between;
+  }
+  .footer .teacher-credits {
+    align-self: center;
+  }
+}
 .header-search {
   max-width: 750px;
   flex-grow: 2;
