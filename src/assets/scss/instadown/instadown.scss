@@ -26,6 +26,27 @@ $breakpoint-tablet: 768px;
 }
 
 .instadown {
+  .img-wrapper img{
+    max-width: 100%;
+  }
+
+  .section-media {
+    .side-function {
+       .btn.btn-fullwith {
+         width: 100%;
+         margin-bottom: 15px;
+       }
+       .share {
+         button {
+           margin-left: 15px;
+         }
+         button:fisrt-child {
+           margin-left: initial;
+         }
+       }
+    }
+  }
+
   .footer .container .row{
     justify-content: space-between;
   }
