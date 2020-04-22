@@ -132,7 +132,7 @@ function DefaultHeader() {
               <NavItem>
                 <NavLink
                   data-placement="bottom"
-                  href="https://twitter.com/CreativeTim?ref=creativetim"
+                  href="https://twitter.com"
                   target="_blank"
                   title="Follow us on Twitter"
                 >
@@ -143,7 +143,7 @@ function DefaultHeader() {
               <NavItem>
                 <NavLink
                   data-placement="bottom"
-                  href="https://www.facebook.com/CreativeTim?ref=creativetim"
+                  href="https://facebook.com"
                   target="_blank"
                   title="Like us on Facebook"
                 >
@@ -154,7 +154,7 @@ function DefaultHeader() {
               <NavItem>
                 <NavLink
                   data-placement="bottom"
-                  href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
+                  href="https://www.instagram.com/"
                   target="_blank"
                   title="Follow us on Instagram"
                 >
@@ -165,7 +165,7 @@ function DefaultHeader() {
               <NavItem>
                 <NavLink
                   data-placement="bottom"
-                  href="https://www.github.com/CreativeTimOfficial/paper-kit-react?ref=creativetim"
+                  href="https://github.com/thinhnnd"
                   target="_blank"
                   title="Star on GitHub"
                 >
@@ -175,7 +175,7 @@ function DefaultHeader() {
               </NavItem>
               <NavItem>
                 <NavLink
-                  href="/profile-page"
+                  href="/about"
                   target=""
                 >
                   <i className="nc-icon nc-book-bookmark" /> About Us
@@ -183,7 +183,7 @@ function DefaultHeader() {
               </NavItem>
               <NavItem>
                 <NavLink
-                  href="/landing-page"
+                  href="/about"
                   target=""
                 >
                   <i className="nc-icon nc-book-bookmark" /> How to use
