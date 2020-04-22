@@ -1,6 +1,8 @@
 import React from "react";
 import { Container } from "reactstrap";
 import Gallery from "react-photo-gallery";
+import { data } from "../../test/fakedata";
+import HoverImage from "components/HoverImage";
 // reactstrap components
 // import {
 //   Card,
@@ -14,7 +16,6 @@ import Gallery from "react-photo-gallery";
 // } from "reactstrap";
 
 // core components
-
 const items = [
     {
         src: require("assets/img/soroush-karimi.jpg"),
@@ -129,6 +130,19 @@ function HomeGallery() {
           height: 3
         }
       ];
+
+      const imageRenderer = 
+        ({ index, left, top, key, photo }) => (
+          <HoverImage
+            key={key}
+            margin={"2px"}
+            index={index}
+            photo={photo}
+            left={left}
+            top={top}
+          />
+        );
+    
       
       // Convert array to JSX items
       items = photos.map(function(item) {
@@ -139,7 +153,7 @@ function HomeGallery() {
             <div className="section">
                 <Container>
                 <h3>Selected by Instadown</h3>
-                <Gallery photos={photos} />
+                <Gallery photos={data.data} renderImage={imageRenderer} />
                 </Container>
                 
             </div>

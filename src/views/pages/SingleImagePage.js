@@ -26,8 +26,8 @@ function SingleImagePage(props) {
                         <Col md="9">
                             <div className="text-center">
                                 <div class="img-wrapper">
-                                    {/* <img src="https://cdn.pixabay.com/photo/2012/10/25/23/52/wolf-62898_960_720.jpg" /> */}
-                                    <img src="https://cdn.pixabay.com/photo/2016/03/09/09/39/shoes-1245920_1280.jpg" />
+                                    <img src="https://cdn.pixabay.com/photo/2012/10/25/23/52/wolf-62898_960_720.jpg" />
+                                    {/* <img src="https://cdn.pixabay.com/photo/2016/03/09/09/39/shoes-1245920_1280.jpg" /> */}
                                 </div>
                             </div>
 
