@@ -7,15 +7,37 @@ $breakpoint-tablet: 768px;
       .page-header {
         min-height: calc(100vh - 150px)
       }
+      
   }
     //thinhnnd 
     #search-input {
       padding: 25px 10px;
       font-size: 20px;
   }
-
-  
+ 
 }
+
+@media (max-width: 768px) {
+  .instadown { 
+    .header-search {
+    margin: 0 15px 15px 11px;
+  }
+}
+}
+
+.header-search {
+  max-width: 750px;
+  flex-grow: 2;
+  &.hide {
+    display: none;
+  }
+}
+
+.show {
+  display: initial;
+}
+
+
 
 
 

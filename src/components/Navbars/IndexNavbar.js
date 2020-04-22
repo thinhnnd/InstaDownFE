@@ -28,12 +28,17 @@ import {
   NavItem,
   NavLink,
   Nav,
-  Container
+  Container,
+  InputGroup,
+  InputGroupAddon,
+  Input,
+  InputGroupText
 } from "reactstrap";
 
 function IndexNavbar() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [navbarCollapse, setNavbarCollapse] = React.useState(false);
+  const [navbarSearch, setNavbarSearch] = React.useState("hide");
 
   const toggleNavbarCollapse = () => {
     setNavbarCollapse(!navbarCollapse);
@@ -41,24 +46,26 @@ function IndexNavbar() {
   };
 
   React.useEffect(() => {
-    const updateNavbarColor = () => {
+    const updateNavbar = () => {
       if (
         document.documentElement.scrollTop > 299 ||
         document.body.scrollTop > 299
       ) {
         setNavbarColor("");
+        setNavbarSearch("show");
       } else if (
         document.documentElement.scrollTop < 300 ||
         document.body.scrollTop < 300
       ) {
         setNavbarColor("navbar-transparent");
+        setNavbarSearch("hide");
       }
     };
 
-    window.addEventListener("scroll", updateNavbarColor);
+    window.addEventListener("scroll", updateNavbar);
 
     return function cleanup() {
-      window.removeEventListener("scroll", updateNavbarColor);
+      window.removeEventListener("scroll", updateNavbar);
     };
   });
   return (
@@ -80,16 +87,30 @@ function IndexNavbar() {
             })}
             onClick={toggleNavbarCollapse}
           >
+
             <span className="navbar-toggler-bar bar1" />
             <span className="navbar-toggler-bar bar2" />
             <span className="navbar-toggler-bar bar3" />
           </button>
         </div>
+        <div className={classnames("header-search", navbarSearch)}>
+       
+            <InputGroup>
+              <Input id="search-input-header" placeholder="Instagram username or post" type="text" />
+              <InputGroupAddon addonType="append">
+                <InputGroupText>
+                  <i aria-hidden={true} className="fa fa-arrow-right" />
+                </InputGroupText>
+              </InputGroupAddon>
+            </InputGroup>
+          </div>
         <Collapse
           className="justify-content-end"
           navbar
           isOpen={navbarCollapse}
         >
+          
+
           <Nav navbar>
             <NavItem>
               <NavLink

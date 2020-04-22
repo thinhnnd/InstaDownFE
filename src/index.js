@@ -30,6 +30,7 @@ import NucleoIcons from "views/NucleoIcons.js";
 import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
 import RegisterPage from "views/examples/RegisterPage.js";
+import SingleImagePage from "views/pages/SingleImagePage";
 // others
 
 ReactDOM.render(
@@ -51,6 +52,10 @@ ReactDOM.render(
       <Route
         path="/register-page"
         render={props => <RegisterPage {...props} />}
+      />
+      <Route
+        path="/single-image"
+        render={props => <SingleImagePage {...props} />}
       />
       <Redirect to="/index" />
     </Switch>
