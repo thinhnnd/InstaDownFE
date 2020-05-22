@@ -68,6 +68,15 @@ $breakpoint-tablet: 768px;
   .footer .teacher-credits {
     align-self: center;
   }
+
+  .react-photo-gallery--gallery {
+    
+  }
+
+  .react-photo-gallery--gallery > div {
+    justify-content: center;
+    
+  }
 }
 .header-search {
   max-width: 750px;
@@ -89,6 +98,12 @@ $breakpoint-tablet: 768px;
   position: relative;
   text-align: center;
   cursor: default;
+  max-width: 524px;
+  height: auto !important;
+  img {
+    max-width: 524px;
+    height: auto;
+  }
 }
 
 .hovereffect .overlay {

@@ -5,8 +5,9 @@ import { data } from "../../test/fakedata";
 import ImageWrapper from "components/HoverImage";
 import axios from 'axios';
 import downloadFromLink from "services/downImageFromUrl";
+import { CONSTANTS } from '../../constants';
 
-
+import API_HELPERS from '../../api';
 // reactstrap components
 // import {
 //   Card,
@@ -22,28 +23,39 @@ import downloadFromLink from "services/downImageFromUrl";
 function HomeGallery() {
 
   const [photos, setPhotos] = useState(data.data);
+  const [isLoading, setIsLoading] = useState(true);
   const [currentPhoto, setCurrentPhoto] = useState(data.data[0])
-  let url1 = 'https://insta-down.azurewebsites.net/download/album';
-  let url2 = 'https://insta-scrapy--thinhnnd.repl.co/download/album';
   useEffect(() => {
-    axios.post(url1, { url: "https://www.instagram.com/beautyplus.girl" })
-      .then((res) => {
-        let photos = res.data.data.map(function (item) {
-          let src = item.url;
+    async function callApi() {
+      try {
+        //var res = await API_HELPERS.getPostImage("https://www.instagram.com/p/B-6MgW7Biww/");
+        var res = await API_HELPERS.getUserImages("https://www.instagram.com/groupsweetgirl");
+        console.log(res)
+        setPhotos(res.data);
+        setIsLoading(false);
+        setCurrentPhoto(res.data);
+      }catch (err) {
+        console.log(err)
+      }
+    }
+    callApi();
+    //    axios.post(`${CONSTANTS.INSTADOWN_API}/download/album`, { url: "https://www.instagram.com/beautyplus.girl" })
+    //  .then((res) => {
+    //     let photos = res.data.data.map(function (item) {
+    //       let src = item.url;
 
-          return {
-            ...item,
-            src: item.url
-          }
-        })
-        console.log(photos);
-
-        setPhotos(photos);
-        setCurrentPhoto(photos[0]);
-      })
-      .catch(err => {
-        console.log(err);
-      })
+    //       return {
+    //         ...item,
+    //         src: item.url
+    //       }
+    //     })
+    //     setPhotos(photos);
+    //     setIsLoading(false);
+    //     setCurrentPhoto(photos[0]);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   })
   }, []);
   const imageRenderer =
     ({ index, left, top, key, photo }) => (
@@ -69,7 +81,7 @@ function HomeGallery() {
       <div className="section">
         <Container>
           <h3>Selected by Instadown</h3>
-          <Gallery photos={photos} renderImage={imageRenderer} />
+          { isLoading ? <p>Loading...</p> : <Gallery className="my-gallery" photos={photos} renderImage={imageRenderer} /> }
           <Modal isOpen={modal} toggle={toggleModal}>
             <div className="modal-header">
               <button
@@ -91,7 +103,7 @@ function HomeGallery() {
                   download
                   title="ImageName"
                   className="btn btn-success mr-1"
-                  onClick={ () => { downloadFromLink(currentPhoto.src, currentPhoto.shortcode)}}
+                  onClick={ () => { downloadFromLink(currentPhoto.url, currentPhoto.shortcode)}}
                   download={true}
                 >
                   Download Free
@@ -101,8 +113,8 @@ function HomeGallery() {
 
             </div>
             <div className="modal-body">
-              <div style={{maxWidth: '626px', margin: '0 auto'}}>
-                <img style={{  width:"100%"}} src={currentPhoto.src} />
+              <div style={{maxWidth: '525px', height:'auto', margin: '0 auto'}}>
+                <img style={{  width:"100%", height: 'auto'}} src={currentPhoto.url} />
 
               </div>
             </div>

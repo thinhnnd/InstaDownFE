@@ -35,13 +35,14 @@ const ImageWrapper = ({
         alt={photo.title}
         style={{ ...imgStyle }}
         {...photo}
+        src={photo.url}
         onClick={() => handleClick(photo)}
       />
       <div className="overlay">
         <h2 style={!addWatermark? { display: "none" }: {}} className="btn-add-wm"><span className="fa fa-edit"></span> Watermark</h2>
         <h2 style={addWatermark? { display: "none" }: {}} className="btn-add-wm"><span className="fa fa-edit"></span></h2>
         <p className="icon-links">
-          <a onClick={ () => { downloadFromLink(photo.src, photo.shortcode) }} >
+          <a onClick={ () => { downloadFromLink(photo.url, photo.shortcode) }} >
             <span className="fa fa-download"></span>
           </a>
           <a href="#">
