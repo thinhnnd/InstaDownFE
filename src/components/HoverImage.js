@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import downloadFromLink from '../services/downImageFromUrl';
 
 const imgStyle = {
   transition: "transform .135s cubic-bezier(0.0,0.0,0.2,1),opacity linear .15s"
@@ -10,14 +11,15 @@ const cont = {
   position: "relative"
 };
 
-const HoverImage = ({
+const ImageWrapper = ({
   index,
   photo,
   margin,
   direction,
   top,
   left,
-  selected
+  selected,
+  handleClick
 }) => {
   // to hide add watermark button
   let addWatermark = true;
@@ -33,15 +35,19 @@ const HoverImage = ({
         alt={photo.title}
         style={{ ...imgStyle }}
         {...photo}
+        onClick={() => handleClick(photo)}
       />
       <div className="overlay">
         <h2 style={!addWatermark? { display: "none" }: {}} className="btn-add-wm"><span className="fa fa-edit"></span> Watermark</h2>
+        <h2 style={addWatermark? { display: "none" }: {}} className="btn-add-wm"><span className="fa fa-edit"></span></h2>
         <p className="icon-links">
-          <a href="#">
+          <a onClick={ () => { downloadFromLink(photo.src, photo.shortcode) }} >
             <span className="fa fa-download"></span>
           </a>
           <a href="#">
             <span className="fa fa-heart"></span>
+            <span className="ml-2">{photo.countLike}</span>
+
           </a>
 
         </p>
@@ -50,4 +56,4 @@ const HoverImage = ({
   );
 };
 
-export default HoverImage;
+export default ImageWrapper;

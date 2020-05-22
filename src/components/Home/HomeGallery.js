@@ -1,8 +1,12 @@
-import React from "react";
-import { Container } from "reactstrap";
+import React, { useState, useEffect } from "react";
+import { Container, Button, Modal } from "reactstrap";
 import Gallery from "react-photo-gallery";
 import { data } from "../../test/fakedata";
-import HoverImage from "components/HoverImage";
+import ImageWrapper from "components/HoverImage";
+import axios from 'axios';
+import downloadFromLink from "services/downImageFromUrl";
+
+
 // reactstrap components
 // import {
 //   Card,
@@ -15,150 +19,117 @@ import HoverImage from "components/HoverImage";
 //   CarouselCaption
 // } from "reactstrap";
 
-// core components
-const items = [
-    {
-        src: require("assets/img/soroush-karimi.jpg"),
-        altText: "Somewhere",
-        caption: "Somewhere"
-    },
-    {
-        src: require("assets/img/federico-beccari.jpg"),
-        altText: "Somewhere else",
-        caption: "Somewhere else"
-    },
-    {
-        src: require("assets/img/joshua-stannard.jpg"),
-        altText: "Here it is",
-        caption: "Here it is"
-    }
-];
-
 function HomeGallery() {
-    var items = [
-        {id: 1, image: 'https://cdn.pixabay.com/photo/2015/04/20/14/24/animal-731576_1280.jpg'},
-        {id: 2, image: 'https://cdn.pixabay.com/photo/2020/04/09/11/42/dogs-5021085_1280.jpg'},
-        {id: 3, image: 'https://cdn.pixabay.com/photo/2019/12/30/05/22/scarlet-4728857_960_720.jpg'},
-        {id: 4, image: 'https://cdn.pixabay.com/photo/2020/04/03/15/27/flower-meadow-4999277_1280.jpg'},
-        {id: 5, image: 'https://cdn.pixabay.com/photo/2020/04/09/19/19/cartoon-doctor-5022797_960_720.jpg'}
-      ];
 
-      const photos = [
-        {
-          src: "https://source.unsplash.com/2ShvY8Lf6l0/800x599",
-          width: 4,
-          height: 3
-        },
-        {
-          src: "https://source.unsplash.com/Dm-qxdynoEc/800x799",
-          width: 1,
-          height: 1
-        },
-        {
-          src: "https://source.unsplash.com/qDkso9nvCg0/600x799",
-          width: 3,
-          height: 4
-        },
-        {
-          src: "https://source.unsplash.com/iecJiKe_RNg/600x799",
-          width: 3,
-          height: 4
-        },
-        {
-          src: "https://source.unsplash.com/epcsn8Ed8kY/600x799",
-          width: 3,
-          height: 4
-        },
-        {
-          src: "https://source.unsplash.com/NQSWvyVRIJk/800x599",
-          width: 4,
-          height: 3
-        },
-        {
-          src: "https://source.unsplash.com/zh7GEuORbUw/600x799",
-          width: 3,
-          height: 4
-        },
-        {
-          src: "https://source.unsplash.com/PpOHJezOalU/800x599",
-          width: 4,
-          height: 3
-        },
-        {
-          src: "https://source.unsplash.com/I1ASdgphUH4/800x599",
-          width: 4,
-          height: 3
-        },
-        {
-          src: "https://source.unsplash.com/XiDA78wAZVw/600x799",
-          width: 3,
-          height: 4
-        },
-        {
-          src: "https://source.unsplash.com/x8xJpClTvR0/800x599",
-          width: 4,
-          height: 3
-        },
-        {
-          src: "https://source.unsplash.com/u9cG4cuJ6bU/4927x1000",
-          width: 4927,
-          height: 1000
-        },
-        {
-          src: "https://source.unsplash.com/qGQNmBE7mYw/800x599",
-          width: 4,
-          height: 3
-        },
-        {
-          src: "https://source.unsplash.com/NuO6iTBkHxE/800x599",
-          width: 4,
-          height: 3
-        },
-        {
-          src: "https://source.unsplash.com/pF1ug8ysTtY/600x400",
-          width: 4,
-          height: 3
-        },
-        {
-          src: "https://source.unsplash.com/A-fubu9QJxE/800x533",
-          width: 4,
-          height: 3
-        },
-        {
-          src: "https://source.unsplash.com/5P91SF0zNsI/740x494",
-          width: 4,
-          height: 3
-        }
-      ];
+  const [photos, setPhotos] = useState(data.data);
+  const [currentPhoto, setCurrentPhoto] = useState(data.data[0])
+  let url1 = 'https://insta-down.azurewebsites.net/download/album';
+  let url2 = 'https://insta-scrapy--thinhnnd.repl.co/download/album';
+  useEffect(() => {
+    axios.post(url1, { url: "https://www.instagram.com/beautyplus.girl" })
+      .then((res) => {
+        let photos = res.data.data.map(function (item) {
+          let src = item.url;
 
-      const imageRenderer = 
-        ({ index, left, top, key, photo }) => (
-          <HoverImage
-            key={key}
-            margin={"2px"}
-            index={index}
-            photo={photo}
-            left={left}
-            top={top}
-          />
-        );
-    
-      
-      // Convert array to JSX items
-      items = photos.map(function(item) {
-        return <div key={item.id}><img src={item.image} /></div>
-      });
-    return (
-        <>
-            <div className="section">
-                <Container>
-                <h3>Selected by Instadown</h3>
-                <Gallery photos={data.data} renderImage={imageRenderer} />
-                </Container>
-                
-            </div>
-        </>
+          return {
+            ...item,
+            src: item.url
+          }
+        })
+        console.log(photos);
+
+        setPhotos(photos);
+        setCurrentPhoto(photos[0]);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }, []);
+  const imageRenderer =
+    ({ index, left, top, key, photo }) => (
+      <ImageWrapper
+        key={key}
+        margin={"2px"}
+        index={index}
+        photo={photo}
+        left={left}
+        top={top}
+        handleClick={(photo) => { setCurrentPhoto(photo); toggleModal(); }}
+      />
     );
+
+
+  // Convert array to JSX items
+  const [modal, setModal] = React.useState(false);
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+  return (
+    <>
+      <div className="section">
+        <Container>
+          <h3>Selected by Instadown</h3>
+          <Gallery photos={photos} renderImage={imageRenderer} />
+          <Modal isOpen={modal} toggle={toggleModal}>
+            <div className="modal-header">
+              <button
+                aria-label="Close"
+                className="close"
+                type="button"
+                onClick={toggleModal}
+              >
+                <span aria-hidden={true}>×</span>
+              </button>
+              <div style = {{ display: 'flex', flexDirection: 'row'}}>
+               <Button active={false} outline className="ml-1 mr-1" color="danger" type="button">
+                  <i className="fa fa-heart mr-1" />
+                  {
+                    currentPhoto.countLike
+                  }
+                </Button>
+                <button
+                  download
+                  title="ImageName"
+                  className="btn btn-success mr-1"
+                  onClick={ () => { downloadFromLink(currentPhoto.src, currentPhoto.shortcode)}}
+                  download={true}
+                >
+                  Download Free
+                </button>
+              </div>
+
+
+            </div>
+            <div className="modal-body">
+              <div style={{maxWidth: '626px', margin: '0 auto'}}>
+                <img style={{  width:"100%"}} src={currentPhoto.src} />
+
+              </div>
+            </div>
+            <div className="modal-footer">
+              <div className="left-side">
+                <Button
+                  className="btn-link"
+                  color="default"
+                  type="button"
+                  onClick={toggleModal}
+                >
+                  Never mind
+                    </Button>
+              </div>
+              <div className="divider" />
+              <div className="right-side">
+                <Button className="btn-round" color="danger" type="button">
+                  Delete
+                </Button>
+              </div>
+            </div>
+          </Modal>
+        </Container>
+
+      </div>
+    </>
+  );
 }
 
 export default HomeGallery;

@@ -53,7 +53,7 @@ function Index() {
   });
   return (
     <div className="instadown">
-      <DefaultNavbar />
+      <IndexNavbar />
       <IndexHeader />
       <div className="main">
         {/* <SectionButtons />

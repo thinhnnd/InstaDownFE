@@ -13,7 +13,8 @@ import {
 
 function SingleImagePage(props) {
     let  link = props.match.params.link; 
-    console.log(link);
+    const id = props.match.params.id;
+    console.log(id);
 
     return (
         <div className="instadown" style={{ backgroundColor: '#fefefe' }}>
@@ -24,7 +25,7 @@ function SingleImagePage(props) {
                     <Row>
                         <Col md="9">
                             <div className="text-center">
-                                <div class="img-wrapper">
+                                <div className="img-wrapper">
                                     <img src="https://cdn.pixabay.com/photo/2012/10/25/23/52/wolf-62898_960_720.jpg" />
                                     {/* <img src="https://cdn.pixabay.com/photo/2016/03/09/09/39/shoes-1245920_1280.jpg" /> */}
                                 </div>
@@ -32,23 +33,23 @@ function SingleImagePage(props) {
 
                         </Col>
                         <Col md="3" className="side-function">
-                            <button class="btn btn-primary btn-fullwith">
-                                <i class="fa fa-download"></i> DownLoad Free
+                            <button className="btn btn-primary btn-fullwith">
+                                <i className="fa fa-download"></i> DownLoad Free
                             </button>
                             <div>
-                                <button class="btn btn-secondary btn-fullwith">
-                                    <i class="fa fa-pencil-square"></i> Add WaterMark
+                                <button className="btn btn-secondary btn-fullwith">
+                                    <i className="fa fa-pencil-square"></i> Add WaterMark
                                 </button>
                             </div>
                             <div className="share text-center">
-                                <button class="btn btn-danger btn-just-icon">
-                                    <i class="fa fa-heart"></i>
+                                <button className="btn btn-danger btn-just-icon">
+                                    <i className="fa fa-heart"></i>
                                 </button>
-                                <button class="btn btn-info btn-just-icon">
-                                    <i class="fa fa-facebook"></i>
+                                <button className="btn btn-info btn-just-icon">
+                                    <i className="fa fa-facebook"></i>
                                 </button>
-                                <button class="btn btn-success btn-just-icon">
-                                    <i class="fa fa-link"></i>
+                                <button className="btn btn-success btn-just-icon">
+                                    <i className="fa fa-link"></i>
                                 </button>
                             </div>
 

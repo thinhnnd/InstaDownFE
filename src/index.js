@@ -36,7 +36,7 @@ import SingleImagePage from "views/pages/SingleImagePage";
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route path="/index" render={props => <Index {...props} />} />
+      <Route exact path="/" render={props => <Index {...props} />} />
       <Route
         path="/nucleo-icons"
         render={props => <NucleoIcons {...props} />}
@@ -46,7 +46,7 @@ ReactDOM.render(
         render={props => <LandingPage {...props} />}
       />
       <Route
-        path="/profile-page"
+        path="/post/:id"
         render={props => <ProfilePage {...props} />}
       />
       <Route
@@ -54,10 +54,10 @@ ReactDOM.render(
         render={props => <RegisterPage {...props} />}
       />
       <Route
-        path="/single-image"
+        path="/image/:id"
         render={props => <SingleImagePage {...props} />}
       />
-      <Redirect to="/index" />
+      <Redirect to="/" />
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")

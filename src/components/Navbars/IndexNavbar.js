@@ -157,8 +157,7 @@ function IndexNavbar() {
             </NavItem>
             <NavItem>
               <NavLink
-                href="https://github.com/thinhnnd"
-                target="_blank"
+                href="/about"
               >
                 <i className="nc-icon nc-book-bookmark" /> About Us
               </NavLink>
