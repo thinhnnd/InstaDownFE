@@ -16,7 +16,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React, { useState } from "react";
 
 // reactstrap components
 
@@ -44,6 +44,11 @@ import MainFooter from "components/Footers/MainFooter.js";
 import HomeGallery from "components/Home/HomeGallery";
 
 function Index() {
+  const [searchInput, setSearchInput] = useState('');
+  const handleChange = (e) => {
+    setSearchInput(e.target.value);
+  }
+  
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
     document.body.classList.add("index");
@@ -53,22 +58,9 @@ function Index() {
   });
   return (
     <div className="instadown">
-      <IndexNavbar />
-      <IndexHeader />
+      <IndexNavbar searchInput={searchInput} handleSearchChange={ (e) => handleChange(e)} />
+      <IndexHeader searchInput={searchInput} handleSearchChange={ (e) => handleChange(e)} />
       <div className="main">
-        {/* <SectionButtons />
-        <SectionNavbars /> */}
-        {/* <SectionNavigation />
-        <SectionProgress />
-        <SectionNotifications />
-        <SectionTypography />
-        <SectionJavaScript />
-        <SectionCarousel />
-        <SectionNucleoIcons />
-        <SectionDark />
-        <SectionLogin />
-        <SectionExamples /> */}
-        {/* <SectionDownload /> */}
         <HomeGallery />
         <MainFooter />
       </div>

@@ -3,6 +3,7 @@ import CONFIG from './config';
 
 export const getUserImages = async (userUrl) => {
     try {
+        console.log('user api', userUrl);
         const res = await axios.post(`${CONFIG.url}/album`, { url: userUrl })
         return res.data;
     }

@@ -8,54 +8,21 @@ import downloadFromLink from "services/downImageFromUrl";
 import { CONSTANTS } from '../../constants';
 
 import API_HELPERS from '../../api';
-// reactstrap components
-// import {
-//   Card,
-//   Container,
-//   Row,
-//   Col,
-//   Carousel,
-//   CarouselItem,
-//   CarouselIndicators,
-//   CarouselCaption
-// } from "reactstrap";
+import { useSelector, useDispatch } from "react-redux";
+import { getUserPhotoAlbum } from "store/actions/searchAction";
 
 function HomeGallery() {
 
   const [photos, setPhotos] = useState(data.data);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPhoto, setCurrentPhoto] = useState(data.data[0])
-  useEffect(() => {
-    async function callApi() {
-      try {
-        //var res = await API_HELPERS.getPostImage("https://www.instagram.com/p/B-6MgW7Biww/");
-        var res = await API_HELPERS.getUserImages("https://www.instagram.com/groupsweetgirl");
-        console.log(res)
-        setPhotos(res.data);
-        setIsLoading(false);
-        setCurrentPhoto(res.data);
-      }catch (err) {
-        console.log(err)
-      }
-    }
-    callApi();
-    //    axios.post(`${CONSTANTS.INSTADOWN_API}/download/album`, { url: "https://www.instagram.com/beautyplus.girl" })
-    //  .then((res) => {
-    //     let photos = res.data.data.map(function (item) {
-    //       let src = item.url;
+  let myState = useSelector(state => state);
+  const listPhotos = useSelector(state => state.search.photos);
+  const loading = useSelector(state => state.search.isLoading)
+  const dispatch = useDispatch();
 
-    //       return {
-    //         ...item,
-    //         src: item.url
-    //       }
-    //     })
-    //     setPhotos(photos);
-    //     setIsLoading(false);
-    //     setCurrentPhoto(photos[0]);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   })
+  useEffect(() => {
+    dispatch(getUserPhotoAlbum('https://www.instagram.com/traveljetter/'));
   }, []);
   const imageRenderer =
     ({ index, left, top, key, photo }) => (
@@ -81,7 +48,7 @@ function HomeGallery() {
       <div className="section">
         <Container>
           <h3>Selected by Instadown</h3>
-          { isLoading ? <p>Loading...</p> : <Gallery className="my-gallery" photos={photos} renderImage={imageRenderer} /> }
+          { loading ? <p>Loading...</p> : <Gallery className="my-gallery" photos={listPhotos.data} renderImage={imageRenderer} /> }
           <Modal isOpen={modal} toggle={toggleModal}>
             <div className="modal-header">
               <button

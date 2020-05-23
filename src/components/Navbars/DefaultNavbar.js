@@ -16,7 +16,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 // nodejs library that concatenates strings
 import classnames from "classnames";
@@ -34,12 +34,13 @@ import {
   InputGroupText,
   InputGroupAddon,
   InputGroup,
-  Input
+  Input,
+  Button
 } from "reactstrap";
+import { useDispatch } from "react-redux";
+import { getUserPhotoAlbum } from "store/actions/searchAction";
 
-
-
-function DefaultHeader() {
+function DefaultHeader(props) {
     let location = window.location.pathname;
     let nav = "";
     let navSearch = "";
@@ -50,11 +51,25 @@ function DefaultHeader() {
     const [navbarColor, setNavbarColor] = React.useState(nav);
     const [navbarCollapse, setNavbarCollapse] = React.useState(false);
     const [navbarSearch, setNavbarSearch] = React.useState(navSearch);
+    const [searchInput, setSearchInput] = useState('');
+    const dispatch = useDispatch();
+  
+
+    const handleChange = (e) => {
+      setSearchInput(e.target.value);
+    }
+
+    const handleSubmit = () => {
+      if(props.searchInput != '') {
+        dispatch(getUserPhotoAlbum(props.searchInput))
+      }
+    }
   
     const toggleNavbarCollapse = () => {
       setNavbarCollapse(!navbarCollapse);
       document.documentElement.classList.toggle("nav-open");
     };
+
   
     React.useEffect(() => {
       const updateNavbar = () => {
@@ -113,11 +128,11 @@ function DefaultHeader() {
           <div className={classnames("header-search", navbarSearch)}>
          
               <InputGroup>
-                <Input id="search-input-header" placeholder="Instagram username or post" type="text" />
+                <Input id="searchInput" onChange={(e)=> handleChange(e)} value={searchInput} placeholder="Instagram username or post" type="text" />
                 <InputGroupAddon addonType="append">
-                  <InputGroupText>
+                  <Button type="button" className="nav-search-btn" onClick={ () => handleSubmit()}>
                     <i aria-hidden={true} className="fa fa-arrow-right" />
-                  </InputGroupText>
+                  </Button>
                 </InputGroupAddon>
               </InputGroup>
             </div>

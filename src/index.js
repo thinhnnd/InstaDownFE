@@ -31,34 +31,43 @@ import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
 import RegisterPage from "views/examples/RegisterPage.js";
 import SingleImagePage from "views/pages/SingleImagePage";
+import { createStore, applyMiddleware } from 'redux';
+import { create } from "nouislider";
+import thunk from "redux-thunk";
+import { Provider } from "react-redux";
+import rootReducer from "store/reducers/rootReducer";
 // others
 
+const store = createStore(rootReducer, applyMiddleware(thunk))
+
 ReactDOM.render(
-  <BrowserRouter>
-    <Switch>
-      <Route exact path="/" render={props => <Index {...props} />} />
-      <Route
-        path="/nucleo-icons"
-        render={props => <NucleoIcons {...props} />}
-      />
-      <Route
-        path="/about"
-        render={props => <LandingPage {...props} />}
-      />
-      <Route
-        path="/post/:id"
-        render={props => <ProfilePage {...props} />}
-      />
-      <Route
-        path="/register-page"
-        render={props => <RegisterPage {...props} />}
-      />
-      <Route
-        path="/image/:id"
-        render={props => <SingleImagePage {...props} />}
-      />
-      <Redirect to="/" />
-    </Switch>
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" render={props => <Index {...props} />} />
+        <Route
+          path="/nucleo-icons"
+          render={props => <NucleoIcons {...props} />}
+        />
+        <Route
+          path="/about"
+          render={props => <LandingPage {...props} />}
+        />
+        <Route
+          path="/post/:id"
+          render={props => <ProfilePage {...props} />}
+        />
+        <Route
+          path="/register-page"
+          render={props => <RegisterPage {...props} />}
+        />
+        <Route
+          path="/image/:id"
+          render={props => <SingleImagePage {...props} />}
+        />
+        <Redirect to="/" />
+      </Switch>
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );

@@ -16,7 +16,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React, {useState} from "react";
 // nodejs library that concatenates strings
 import classnames from "classnames";
 // reactstrap components
@@ -31,13 +31,29 @@ import {
   InputGroup,
   InputGroupAddon,
   Input,
-  InputGroupText
+  InputGroupText,
+  FormGroup,
+  Button
 } from "reactstrap";
+import { useDispatch } from "react-redux";
+import { getUserPhotoAlbum } from "store/actions/searchAction";
 
-function IndexNavbar() {
+function IndexNavbar(props) {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [navbarCollapse, setNavbarCollapse] = React.useState(false);
   const [navbarSearch, setNavbarSearch] = React.useState("hide");
+  const [searchInput, setSearchInput] = useState('');
+  const dispatch = useDispatch()
+
+  const handleChange = (e) => {
+    setSearchInput(e.target.value);
+  }
+
+  const handleSubmit = () => {
+    if(props.searchInput != '') {
+      dispatch(getUserPhotoAlbum(props.searchInput))
+    }
+  }
 
   const toggleNavbarCollapse = () => {
     setNavbarCollapse(!navbarCollapse);
@@ -93,13 +109,12 @@ function IndexNavbar() {
           </button>
         </div>
         <div className={classnames("header-search", navbarSearch)}>
-       
             <InputGroup>
-              <Input id="search-input-header" placeholder="Instagram username or post" type="text" />
+              <Input id="searchInput" onChange={(e)=> props.handleSearchChange(e)} value={props.searchInput} placeholder="Instagram username or post" type="text" />
               <InputGroupAddon addonType="append">
-                <InputGroupText>
+                <Button type="button" className="nav-search-btn" onClick={ () => handleSubmit()}> 
                   <i aria-hidden={true} className="fa fa-arrow-right" />
-                </InputGroupText>
+                </Button>
               </InputGroupAddon>
             </InputGroup>
           </div>

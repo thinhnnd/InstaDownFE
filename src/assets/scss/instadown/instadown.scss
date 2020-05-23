@@ -98,12 +98,7 @@ $breakpoint-tablet: 768px;
   position: relative;
   text-align: center;
   cursor: default;
-  max-width: 524px;
-  height: auto !important;
-  img {
-    max-width: 524px;
-    height: auto;
-  }
+
 }
 
 .hovereffect .overlay {
@@ -220,6 +215,12 @@ $breakpoint-tablet: 768px;
 
 .hovereffect p.icon-links a:first-child {
   margin-right: initial;
+}
+
+.instadown {
+  .nav-search-btn {
+    margin: 0;
+  }
 }
 
 

@@ -27,13 +27,26 @@ import {
   Label,
   InputGroup,
   InputGroupAddon,
-  InputGroupText
+  InputGroupText,
+  Button
 } from "reactstrap";
+import { useDispatch } from "react-redux";
+import { getUserPhotoAlbum } from "store/actions/searchAction";
 
 
 // core components
 
-function IndexHeader() {
+function IndexHeader(props) {
+
+  const dispatch = useDispatch();
+
+
+  const handleSubmit = () => {
+    if(props.searchInput != '') {
+      dispatch(getUserPhotoAlbum(props.searchInput))
+    }
+  }
+
   return (
     <>
       <div
@@ -49,11 +62,11 @@ function IndexHeader() {
             
             <div className="title-brand thinhnnd">
             <InputGroup>
-                <Input id="search-input" placeholder="Instagram username or post" type="text" />
+                <Input id="search-input" onChange = { (e) => props.handleSearchChange(e)} value={props.searchInput} placeholder="Instagram username or post" type="text" />
                 <InputGroupAddon addonType="append">
-                  <InputGroupText>
+                  <Button type="button" color="danger" onClick = { () => handleSubmit() }>
                     <i aria-hidden={true} className="fa fa-arrow-right" />
-                  </InputGroupText>
+                  </Button>
                 </InputGroupAddon>
               </InputGroup>
             </div>
