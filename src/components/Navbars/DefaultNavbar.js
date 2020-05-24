@@ -17,7 +17,7 @@
 
 */
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 // nodejs library that concatenates strings
 import classnames from "classnames";
 //import { useLocation } from 'react-router';
@@ -39,6 +39,7 @@ import {
 } from "reactstrap";
 import { useDispatch } from "react-redux";
 import { getUserPhotoAlbum } from "store/actions/searchAction";
+import checkSearchInput from "services/searchServices";
 
 function DefaultHeader(props) {
     let location = window.location.pathname;
@@ -53,7 +54,7 @@ function DefaultHeader(props) {
     const [navbarSearch, setNavbarSearch] = React.useState(navSearch);
     const [searchInput, setSearchInput] = useState('');
     const dispatch = useDispatch();
-  
+    const history = useHistory();
 
     const handleChange = (e) => {
       setSearchInput(e.target.value);
@@ -61,7 +62,8 @@ function DefaultHeader(props) {
 
     const handleSubmit = () => {
       if(props.searchInput != '') {
-        dispatch(getUserPhotoAlbum(props.searchInput))
+        //dispatch(getUserPhotoAlbum(props.searchInput))
+        checkSearchInput(history, searchInput);
       }
     }
   
@@ -107,7 +109,7 @@ function DefaultHeader(props) {
           <div className="navbar-translate">
             <NavbarBrand
               data-placement="bottom"
-              href="/index"
+              href="/"
               title="InstaDown"
             >
               InstaDown

@@ -10,6 +10,7 @@ import { CONSTANTS } from '../../constants';
 import API_HELPERS from '../../api';
 import { useSelector, useDispatch } from "react-redux";
 import { getUserPhotoAlbum } from "store/actions/searchAction";
+import Loading from '../Utils/Loading';
 
 function HomeGallery() {
 
@@ -48,7 +49,8 @@ function HomeGallery() {
       <div className="section">
         <Container>
           <h3>Selected by Instadown</h3>
-          { loading ? <p>Loading...</p> : <Gallery className="my-gallery" photos={listPhotos.data} renderImage={imageRenderer} /> }
+          
+          { loading ? <Loading /> : <Gallery className="my-gallery" photos={listPhotos.data} renderImage={imageRenderer} /> }
           <Modal isOpen={modal} toggle={toggleModal}>
             <div className="modal-header">
               <button
@@ -85,7 +87,7 @@ function HomeGallery() {
 
               </div>
             </div>
-            <div className="modal-footer">
+            {/* <div className="modal-footer">
               <div className="left-side">
                 <Button
                   className="btn-link"
@@ -102,7 +104,7 @@ function HomeGallery() {
                   Delete
                 </Button>
               </div>
-            </div>
+            </div> */}
           </Modal>
         </Container>
 

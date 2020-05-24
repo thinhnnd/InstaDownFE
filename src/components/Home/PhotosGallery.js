@@ -10,6 +10,7 @@ import { CONSTANTS } from '../../constants';
 import API_HELPERS from '../../api';
 import { useSelector, useDispatch } from "react-redux";
 import { getUserPhotoAlbum } from "store/actions/searchAction";
+import Loading from "components/Utils/Loading";
 
 function PhotosGallery(props) {
 
@@ -23,27 +24,38 @@ function PhotosGallery(props) {
 
   useEffect(() => {
     // dispatch(getUserPhotoAlbum('https://www.instagram.com/traveljetter/'));
-    
+
     //console.log('user name', props.match.params.username);
     handleLoading();
-    
-  }, []);
+
+  }, [props.username, props.postId]);
 
   const handleLoading = () => {
-    let url = 'https://www.instagram.com/' + props.username;
-    console.log(url);
+    
     setIsLoading(true);
-    API_HELPERS.getUserImages(url).then( res => {
-        
-        console.log('res', res);
+    if (props.type == "user") {
+      let url = 'https://www.instagram.com/' + props.username;
+      console.log(url);
+      API_HELPERS.getUserImages(url).then(res => {
         setPhotos(res.data);
         setIsLoading(false);
-        console.log(loading)
-        console.log('photos, ', photos);
-    }).catch(err => {
+      }).catch(err => {
         setIsLoading(false);
         console.log(err);
-    })
+      })
+    }
+    if (props.type == "post") {
+      let url = 'https://www.instagram.com/p/' + props.postId + '/';
+      console.log(url);
+      API_HELPERS.getPostImage(url).then(res => {
+        setPhotos(res.data);
+        setIsLoading(false);
+      }).catch(err => {
+        setIsLoading(false);
+        console.log(err);
+      })
+    }
+
   }
   const imageRenderer =
     ({ index, left, top, key, photo }) => (
@@ -68,65 +80,65 @@ function PhotosGallery(props) {
     <>
       <div className="section mt-5">
         <Container>
-          { isLoading ? <p>Loading...</p> : <Gallery className="my-gallery" photos={photos} renderImage={imageRenderer} /> }
-          { 
+          {isLoading ? <Loading /> : <Gallery className="my-gallery" photos={photos} renderImage={imageRenderer} />}
+          {
             !currentPhoto ? null : <Modal isOpen={modal} toggle={toggleModal}>
-            <div className="modal-header">
-              <button
-                aria-label="Close"
-                className="close"
-                type="button"
-                onClick={toggleModal}
-              >
-                <span aria-hidden={true}>×</span>
-              </button>
-              <div style = {{ display: 'flex', flexDirection: 'row'}}>
-               <Button active={false} outline className="ml-1 mr-1" color="danger" type="button">
-                  <i className="fa fa-heart mr-1" />
-                  {
-                    currentPhoto.countLike
-                  }
-                </Button>
+              <div className="modal-header">
                 <button
-                  download
-                  title="ImageName"
-                  className="btn btn-success mr-1"
-                  onClick={ () => { downloadFromLink(currentPhoto.url, currentPhoto.shortcode)}}
-                  download={true}
-                >
-                  Download Free
-                </button>
-              </div>
-
-
-            </div>
-            <div className="modal-body">
-              <div style={{maxWidth: '525px', height:'auto', margin: '0 auto'}}>
-                <img style={{  width:"100%", height: 'auto'}} src={currentPhoto.url} />
-
-              </div>
-            </div>
-            <div className="modal-footer">
-              <div className="left-side">
-                <Button
-                  className="btn-link"
-                  color="default"
+                  aria-label="Close"
+                  className="close"
                   type="button"
                   onClick={toggleModal}
                 >
-                  Never mind
+                  <span aria-hidden={true}>×</span>
+                </button>
+                <div style={{ display: 'flex', flexDirection: 'row' }}>
+                  <Button active={false} outline className="ml-1 mr-1" color="danger" type="button">
+                    <i className="fa fa-heart mr-1" />
+                    {
+                      currentPhoto.countLike
+                    }
+                  </Button>
+                  <button
+                    download
+                    title="ImageName"
+                    className="btn btn-success mr-1"
+                    onClick={() => { downloadFromLink(currentPhoto.url, currentPhoto.shortcode) }}
+                    download={true}
+                  >
+                    Download Free
+                </button>
+                </div>
+
+
+              </div>
+              <div className="modal-body">
+                <div style={{ maxWidth: '525px', height: 'auto', margin: '0 auto' }}>
+                  <img style={{ width: "100%", height: 'auto' }} src={currentPhoto.url} />
+
+                </div>
+              </div>
+              {/* <div className="modal-footer">
+                <div className="left-side">
+                  <Button
+                    className="btn-link"
+                    color="default"
+                    type="button"
+                    onClick={toggleModal}
+                  >
+                    Never mind
                     </Button>
-              </div>
-              <div className="divider" />
-              <div className="right-side">
-                <Button className="btn-round" color="danger" type="button">
-                  Delete
+                </div>
+                <div className="divider" />
+                <div className="right-side">
+                  <Button className="btn-round" color="danger" type="button">
+                    Delete
                 </Button>
-              </div>
-            </div>
-          </Modal>
+                </div>
+              </div> */}
+            </Modal>
           }
-          
+
         </Container>
 
       </div>

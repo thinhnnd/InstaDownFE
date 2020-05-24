@@ -51,7 +51,7 @@ function ImageModel() {
                     by the name of Lorem Ipsum decided to leave for the far World
                     of Grammar.
                 </div>
-                <div className="modal-footer">
+                {/* <div className="modal-footer">
                     <div className="left-side">
                         <Button
                             className="btn-link"
@@ -68,7 +68,7 @@ function ImageModel() {
                             Delete
                     </Button>
                     </div>
-                </div>
+                </div> */}
             </Modal>
         </>
     );

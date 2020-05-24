@@ -38,6 +38,7 @@ import {
 import { useDispatch } from "react-redux";
 import { getUserPhotoAlbum } from "store/actions/searchAction";
 import { useHistory } from "react-router";
+import checkSearchInput from "services/searchServices";
 
 function IndexNavbar(props) {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
@@ -53,9 +54,9 @@ function IndexNavbar(props) {
 
   const handleSubmit = () => {
     if(props.searchInput != '') {
-      dispatch(getUserPhotoAlbum(props.searchInput));
-      history.push('/user/'+props.searchInput)
-    
+      //dispatch(getUserPhotoAlbum(props.searchInput));
+      //history.push('/user/'+props.searchInput)
+      checkSearchInput(history, props.searchInput);
     }
   }
 
@@ -94,8 +95,7 @@ function IndexNavbar(props) {
           <NavbarBrand
             data-placement="bottom"
             href="/index"
-            target="_blank"
-            title="Coded by Creative Tim"
+            title="Instadown"
           >
             InstaDown
           </NavbarBrand>

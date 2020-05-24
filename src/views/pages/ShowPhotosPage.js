@@ -46,16 +46,15 @@ import PhotosGallery from "components/Home/PhotosGallery";
 
 function UserPage(props) {
   document.documentElement.classList.remove("nav-open");
-  const param = props.param;
-  console.log(props.match.params);
-  React.useEffect(() => {
 
+  React.useEffect(() => {
+    const param = props.param;
   });
   return (
     <div className="instadown">
       <DefaultNavbar />
       <div className="main">
-        <PhotosGallery username={props.match.params.username} />
+        <PhotosGallery type={props.type} username={props.match.params.username} postId={props.match.params.postId} />
         <MainFooter />
      </div>
     </div>

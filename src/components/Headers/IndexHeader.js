@@ -33,6 +33,7 @@ import {
 import { useDispatch } from "react-redux";
 import { getUserPhotoAlbum } from "store/actions/searchAction";
 import { useHistory } from "react-router";
+import checkSearchInput from "services/searchServices";
 
 
 // core components
@@ -42,28 +43,28 @@ function IndexHeader(props) {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const checkSearchInput = (searchInput) => {
-    let base = 'www.instagram.com';
-    if(searchInput.includes(`${base}`)) {
-      if(searchInput.includes(`${base}/p/`)) {
-        var splitUrl = searchInput.split('/p/');
-        history.push('/post/'+ splitUrl[1]);
+  // const checkSearchInput = (searchInput) => {
+  //   let base = 'www.instagram.com';
+  //   if(searchInput.includes(`${base}`)) {
+  //     if(searchInput.includes(`${base}/p/`)) {
+  //       var splitUrl = searchInput.split('/p/');
+  //       history.push('/post/'+ splitUrl[1]);
         
-      }
-      else {
-        console.log('else ', searchInput.split('/'));
-        history.push('/user/');
-      }
-    }
-    else {
-      history.push('/user/'+searchInput);
-    }
-  }
+  //     }
+  //     else {
+  //       let splitUrl = searchInput.split('www.instagram.com/');
+  //       history.push('/user/'+ splitUrl[1]);
+  //     }
+  //   }
+  //   else {
+  //     history.push('/user/'+searchInput);
+  //   }
+  // }
 
   const handleSubmit = () => {
     if(props.searchInput != '') {
       //dispatch(getUserPhotoAlbum(props.searchInput))
-      checkSearchInput(props.searchInput);
+      checkSearchInput(history, props.searchInput);
       //history.push('/user/'+props.searchInput)
     }
   }

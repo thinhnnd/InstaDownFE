@@ -55,8 +55,8 @@ ReactDOM.render(
           render={props => <LandingPage {...props} />}
         />
         <Route
-          path="/post/:id"
-          render={props => <ProfilePage {...props} />}
+          path="/post/:postId"
+          render={props => <UserPage type="post" {...props} />}
         />
         <Route
           path="/register-page"
@@ -64,7 +64,7 @@ ReactDOM.render(
         />
         <Route
           path="/user/:username"
-          render={props => <UserPage {...props} />}
+          render={props => <UserPage type="user" {...props} />}
         />
         <Redirect to="/" />
       </Switch>
