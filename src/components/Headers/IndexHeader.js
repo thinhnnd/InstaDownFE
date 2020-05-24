@@ -32,6 +32,7 @@ import {
 } from "reactstrap";
 import { useDispatch } from "react-redux";
 import { getUserPhotoAlbum } from "store/actions/searchAction";
+import { useHistory } from "react-router";
 
 
 // core components
@@ -39,11 +40,31 @@ import { getUserPhotoAlbum } from "store/actions/searchAction";
 function IndexHeader(props) {
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
+  const checkSearchInput = (searchInput) => {
+    let base = 'www.instagram.com';
+    if(searchInput.includes(`${base}`)) {
+      if(searchInput.includes(`${base}/p/`)) {
+        var splitUrl = searchInput.split('/p/');
+        history.push('/post/'+ splitUrl[1]);
+        
+      }
+      else {
+        console.log('else ', searchInput.split('/'));
+        history.push('/user/');
+      }
+    }
+    else {
+      history.push('/user/'+searchInput);
+    }
+  }
 
   const handleSubmit = () => {
     if(props.searchInput != '') {
-      dispatch(getUserPhotoAlbum(props.searchInput))
+      //dispatch(getUserPhotoAlbum(props.searchInput))
+      checkSearchInput(props.searchInput);
+      //history.push('/user/'+props.searchInput)
     }
   }
 

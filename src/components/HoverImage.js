@@ -35,7 +35,7 @@ const ImageWrapper = ({
         alt={photo.title}
         style={{ ...imgStyle }}
         {...photo}
-        src={photo.url}
+        src={photo.thumbnail}
         onClick={() => handleClick(photo)}
       />
       <div className="overlay">

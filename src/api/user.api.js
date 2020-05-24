@@ -3,12 +3,12 @@ import CONFIG from './config';
 
 export const getUserImages = async (userUrl) => {
     try {
-        console.log('user api', userUrl);
-        const res = await axios.post(`${CONFIG.url}/album`, { url: userUrl })
+        const res = await axios.post(`${CONFIG.url}/album`, { url: userUrl });
+        console.log('user api', res);
         return res.data;
     }
     catch (err) {
-        return err;
+        throw err;
     }
 
 }

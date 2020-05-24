@@ -37,12 +37,14 @@ import {
 } from "reactstrap";
 import { useDispatch } from "react-redux";
 import { getUserPhotoAlbum } from "store/actions/searchAction";
+import { useHistory } from "react-router";
 
 function IndexNavbar(props) {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [navbarCollapse, setNavbarCollapse] = React.useState(false);
   const [navbarSearch, setNavbarSearch] = React.useState("hide");
   const [searchInput, setSearchInput] = useState('');
+  const history = useHistory();
   const dispatch = useDispatch()
 
   const handleChange = (e) => {
@@ -51,7 +53,9 @@ function IndexNavbar(props) {
 
   const handleSubmit = () => {
     if(props.searchInput != '') {
-      dispatch(getUserPhotoAlbum(props.searchInput))
+      dispatch(getUserPhotoAlbum(props.searchInput));
+      history.push('/user/'+props.searchInput)
+    
     }
   }
 

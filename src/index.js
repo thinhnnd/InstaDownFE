@@ -36,6 +36,7 @@ import { create } from "nouislider";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import rootReducer from "store/reducers/rootReducer";
+import UserPage from "views/pages/ShowPhotosPage";
 // others
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
@@ -62,8 +63,8 @@ ReactDOM.render(
           render={props => <RegisterPage {...props} />}
         />
         <Route
-          path="/image/:id"
-          render={props => <SingleImagePage {...props} />}
+          path="/user/:username"
+          render={props => <UserPage {...props} />}
         />
         <Redirect to="/" />
       </Switch>
