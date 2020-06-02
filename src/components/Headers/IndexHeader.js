@@ -28,7 +28,8 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupText,
-  Button
+  Button,
+  Form
 } from "reactstrap";
 import { useDispatch } from "react-redux";
 import { getUserPhotoAlbum } from "store/actions/searchAction";
@@ -49,7 +50,7 @@ function IndexHeader(props) {
   //     if(searchInput.includes(`${base}/p/`)) {
   //       var splitUrl = searchInput.split('/p/');
   //       history.push('/post/'+ splitUrl[1]);
-        
+
   //     }
   //     else {
   //       let splitUrl = searchInput.split('www.instagram.com/');
@@ -62,7 +63,7 @@ function IndexHeader(props) {
   // }
 
   const handleSubmit = () => {
-    if(props.searchInput != '') {
+    if (props.searchInput != '') {
       //dispatch(getUserPhotoAlbum(props.searchInput))
       checkSearchInput(history, props.searchInput);
       //history.push('/user/'+props.searchInput)
@@ -81,16 +82,18 @@ function IndexHeader(props) {
         <div className="filter" />
         <div className="content-center">
           <Container>
-            
+
             <div className="title-brand thinhnnd">
-            <InputGroup>
-                <Input id="search-input" onChange = { (e) => props.handleSearchChange(e)} value={props.searchInput} placeholder="Instagram username or post" type="text" />
-                <InputGroupAddon addonType="append">
-                  <Button type="button" color="danger" onClick = { () => handleSubmit() }>
-                    <i aria-hidden={true} className="fa fa-arrow-right" />
-                  </Button>
-                </InputGroupAddon>
-              </InputGroup>
+              <Form onSubmit={() => handleSubmit()}>
+                <InputGroup>
+                  <Input id="search-input" onChange={(e) => props.handleSearchChange(e)} value={props.searchInput} placeholder="Instagram username or post" type="text" />
+                  <InputGroupAddon addonType="append">
+                    <Button type="submit" color="danger" >
+                      <i aria-hidden={true} className="fa fa-arrow-right" />
+                    </Button>
+                  </InputGroupAddon>
+                </InputGroup>
+              </Form>
             </div>
             <h2 className="presentation-subtitle text-center">
               All Instagram images is here!

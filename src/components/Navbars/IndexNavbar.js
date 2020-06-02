@@ -16,7 +16,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React, {useState} from "react";
+import React, { useState } from "react";
 // nodejs library that concatenates strings
 import classnames from "classnames";
 // reactstrap components
@@ -33,7 +33,8 @@ import {
   Input,
   InputGroupText,
   FormGroup,
-  Button
+  Button,
+  Form
 } from "reactstrap";
 import { useDispatch } from "react-redux";
 import { getUserPhotoAlbum } from "store/actions/searchAction";
@@ -52,10 +53,10 @@ function IndexNavbar(props) {
     setSearchInput(e.target.value);
   }
 
-  const handleSubmit = () => {
-    if(props.searchInput != '') {
-      //dispatch(getUserPhotoAlbum(props.searchInput));
-      //history.push('/user/'+props.searchInput)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (props.searchInput != '') {
+      //dispatch(getUserPhotoAlbum(props.searchInput))
       checkSearchInput(history, props.searchInput);
     }
   }
@@ -113,21 +114,23 @@ function IndexNavbar(props) {
           </button>
         </div>
         <div className={classnames("header-search", navbarSearch)}>
+        <Form onSubmit={handleSubmit}>
             <InputGroup>
-              <Input id="searchInput" onChange={(e)=> props.handleSearchChange(e)} value={props.searchInput} placeholder="Instagram username or post" type="text" />
+              <Input id="searchInput" onChange={(e) => props.handleSearchChange(e)} value={props.searchInput} placeholder="Instagram username or post" type="text" />
               <InputGroupAddon addonType="append">
-                <Button type="button" className="nav-search-btn" onClick={ () => handleSubmit()}> 
+                <Button type="submit" className="nav-search-btn" >
                   <i aria-hidden={true} className="fa fa-arrow-right" />
                 </Button>
               </InputGroupAddon>
             </InputGroup>
-          </div>
+          </Form>
+        </div>
         <Collapse
           className="justify-content-end"
           navbar
           isOpen={navbarCollapse}
         >
-          
+
 
           <Nav navbar>
             <NavItem>
