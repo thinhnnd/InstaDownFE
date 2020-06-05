@@ -37,6 +37,7 @@ import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import rootReducer from "store/reducers/rootReducer";
 import UserPage from "views/pages/ShowPhotosPage";
+import EditImages from "views/pages/EditImages";
 // others
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
@@ -65,6 +66,11 @@ ReactDOM.render(
         <Route
           path="/user/:username"
           render={props => <UserPage type="user" {...props} />}
+        />
+        <Route
+          path="/edit-image"
+          
+          render={props => <EditImages type="edit-image" {...props} />}
         />
         <Redirect to="/" />
       </Switch>
