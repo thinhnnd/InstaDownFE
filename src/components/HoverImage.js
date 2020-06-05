@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import downloadFromLink from '../services/downImageFromUrl';
+import { useHistory } from "react-router-dom";
 
 const imgStyle = {
   transition: "transform .135s cubic-bezier(0.0,0.0,0.2,1),opacity linear .15s"
@@ -23,8 +24,13 @@ const ImageWrapper = ({
 }) => {
   // to hide add watermark button
   let addWatermark = true;
-
+  const history = useHistory();
   addWatermark = photo.width < 230 ? false: true;
+
+  const handleWaterMarkClick = () => {
+    history.push(`/edit-image?link=${photo.url}`);
+  }
+
 
   return (
     <div
@@ -39,8 +45,8 @@ const ImageWrapper = ({
         onClick={() => handleClick(photo)}
       />
       <div className="overlay">
-        <h2 style={!addWatermark? { display: "none" }: {}} className="btn-add-wm"><span className="fa fa-edit"></span> Watermark</h2>
-        <h2 style={addWatermark? { display: "none" }: {}} className="btn-add-wm"><span className="fa fa-edit"></span></h2>
+        <h2 style={!addWatermark? { display: "none" }: {}} onClick={ () => handleWaterMarkClick ()}  className="btn-add-wm"><span className="fa fa-edit"></span> Watermark</h2>
+        <h2 style={addWatermark? { display: "none" }: {}} onClick={ () => handleWaterMarkClick ()} className="btn-add-wm"><span className="fa fa-edit"></span></h2>
         <p className="icon-links">
           <a onClick={ () => { downloadFromLink(photo.url, photo.shortcode) }} >
             <span className="fa fa-download"></span>

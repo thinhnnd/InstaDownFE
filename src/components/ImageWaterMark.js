@@ -58,7 +58,7 @@ class ImageWaterMark extends Component {
     handleDownloadButton = () => {
         var dataURL = this.stageNode.getStage().toDataURL();
         console.log(dataURL);
-        this.downloadURI(dataURL, 'stage.jpg');
+        this.downloadURI(dataURL, 'image.jpg');
     }
 
     handleChangeComplete = (color, event) => {
@@ -71,15 +71,19 @@ class ImageWaterMark extends Component {
     };
 
     handleRemoveLogoImage() {
-        if (this.state.logoUrl.length != 0) {
-            this.setState({
-                logoUrl: ''
-            })
-        }
+        // if (this.state.logoUrl.length != 0) {
+            
+        // }
+
+        this.setState({
+            logoUrl: ''
+        })
+        this.fileInput.value = "";
+        console.log(this.state.logoUrl)
     }
 
     render() {
-        const { stageWidth, stageHeight, textInput, textFontSize, textColor, imageLogoHeight, imageLogoWidth, imageLogoOpacity, textRotation } = this.state;
+        const { stageWidth, stageHeight, textInput, textFontSize, textColor, imageLogoHeight, imageLogoWidth, imageLogoOpacity, textRotation, logoUrl } = this.state;
         console.log('state', this.state);
         return (
             <div class="layout" >
@@ -94,6 +98,7 @@ class ImageWaterMark extends Component {
                         style={{
                             margin: '0 auto',
                             border: "1px solid grey",
+                            backgroundColor: 'grey'
                         }}
                         width={stageWidth} height={stageHeight}
                     >
@@ -102,7 +107,7 @@ class ImageWaterMark extends Component {
                         }}>
                             <MainImage setStageSize={(width, height, ratio) => this.setStageSize(width, height, ratio)} src={this.props.mainImageUrl} />
                             <TextLogo textColor={textColor} textRotation={textRotation} textFontSize={textFontSize} text={textInput} />
-                            <URLImage opacity={imageLogoOpacity}
+                            { logoUrl.length !=  0 ? <URLImage opacity={imageLogoOpacity}
                                 name="image-logo"
                                 draggable
                                 rotation={Math.random() * 180}
@@ -113,7 +118,7 @@ class ImageWaterMark extends Component {
                                 shadowOpacity={0.6}
                                 width={imageLogoWidth}
                                 height={imageLogoHeight}
-                                src={this.state.logoUrl} />
+                                src={this.state.logoUrl} /> : null }
                         </Layer>
                     </Stage>
                 </div>
@@ -125,7 +130,7 @@ class ImageWaterMark extends Component {
                                 <div className="col-6">
                                     <label for="textInput">
                                         <b>Text:</b>
-                            <input id="textInput" name="textInput" value={textInput} onChange={e => this.handleTextChange(e)} />
+                                        <input id="textInput" name="textInput" value={textInput} onChange={e => this.handleTextChange(e)} />
                                     </label>
                                     <form className="form mt-2" style={{ maxWidth: '250px' }}>
                                         <div>
@@ -158,7 +163,7 @@ class ImageWaterMark extends Component {
                             <h5>Image Controller</h5>
                             <div className="row">
                                 <div className="col-6">
-                                    <input type="file" id="file_input" onChange={e => this.handleFileInputChange(e)} />
+                                    <input type="file" id="file_input" onChange={e => this.handleFileInputChange(e)} ref={ref=> this.fileInput = ref} />
                                     <div>
                                         <span>Logo Width:</span>
                                         <div className="mt-3">
@@ -193,15 +198,15 @@ class ImageWaterMark extends Component {
                                                 value={imageLogoOpacity}
                                                 onChange={imageLogoOpacity => this.setState({ imageLogoOpacity })} />
                                         </div>
+                                        <div>
+                                            <input type="button" className="btn btn-danger btn-fullwith" value="export" onClick={() => this.handleDownloadButton()} />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div>
                                 <button onClick={() => this.handleRemoveLogoImage()}>Remove Image</button>
-                            </div>
-                            <div>
-                                <input type="button" className="btn btn-danger btn-fullwith" value="export" onClick={() => this.handleDownloadButton()} />
                             </div>
                         </div>
                     </div>
