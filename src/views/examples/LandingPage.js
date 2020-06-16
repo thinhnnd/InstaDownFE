@@ -61,11 +61,8 @@ function LandingPage() {
               <Col className="ml-auto mr-auto" md="8">
                 <h2 className="title">Our Project</h2>
                 <h5 className="description">
-                  This is the paragraph where you can write more details about
-                  your product. Keep you user engaged by providing meaningful
-                  information. Remember that by this time, the user is curious,
-                  otherwise he wouldn't scroll to get here. Add a button if you
-                  want the user to see more.
+                  Instadown is a project that you can get all images from Instagram. You can simply add watermark to an image and download to your devices.
+                  This project is build from python with django framework as BE and ReactJS library as FE.   
                 </h5>
                 <br />
                 <Button
@@ -89,7 +86,7 @@ function LandingPage() {
                   <div className="description">
                     <h4 className="info-title">Beautiful Images</h4>
                     <p className="description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum elit sed est vulputate condimentum.
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum elit sed est vulputate condimentum.
                     </p>
                     <Button className="btn-link" color="info" href="#pablo">
                       See more
@@ -105,7 +102,7 @@ function LandingPage() {
                   <div className="description">
                     <h4 className="info-title">Free forever</h4>
                     <p>
-                    Praesent fringilla tincidunt turpis, ultrices feugiat ipsum elementum ut. Pellentesque orci velit, tempus in euismod eget, mattis quis magna.
+                      Praesent fringilla tincidunt turpis, ultrices feugiat ipsum elementum ut. Pellentesque orci velit, tempus in euismod eget, mattis quis magna.
                     </p>
                     <Button className="btn-link" color="info" href="#pablo">
                       See more
@@ -121,7 +118,7 @@ function LandingPage() {
                   <div className="description">
                     <h4 className="info-title">Really Fast</h4>
                     <p>
-                    Praesent fringilla tincidunt turpis, ultrices feugiat ipsum elementum ut. Pellentesque orci velit, tempus in euismod eget, mattis quis magna
+                      Praesent fringilla tincidunt turpis, ultrices feugiat ipsum elementum ut. Pellentesque orci velit, tempus in euismod eget, mattis quis magna
                     </p>
                     <Button className="btn-link" color="info" href="#pablo">
                       See more
@@ -137,7 +134,7 @@ function LandingPage() {
                   <div className="description">
                     <h4 className="info-title">Security</h4>
                     <p>
-                    Fringilla tincidunt turpis, ultrices feugiat ipsum elementum ut. Pellentesque orci velit, tempus in euismod
+                      Fringilla tincidunt turpis, ultrices feugiat ipsum elementum ut. Pellentesque orci velit, tempus in euismod
                     </p>
                     <Button className="btn-link" color="info" href="#pablo">
                       See more
@@ -158,47 +155,39 @@ function LandingPage() {
                     <a href="#pablo" onClick={e => e.preventDefault()}>
                       <img
                         alt="..."
-                        src={require("assets/img/faces/clem-onojeghuo-3.jpg")}
+                        src={require("assets/img/faces/hung_mai.jpg")}
                       />
                     </a>
                   </div>
                   <CardBody>
                     <a href="#pablo" onClick={e => e.preventDefault()}>
                       <div className="author">
-                        <CardTitle tag="h4">Henry Ford</CardTitle>
-                        <h6 className="card-category">Product Manager</h6>
+                        <CardTitle tag="h4">Mai V. Hung</CardTitle>
+                        <h6 className="card-category">BE - Developer</h6>
                       </div>
                     </a>
                     <p className="card-description text-center">
+                      More than 1 year experience in Python.
                       Teamwork is so important that it is virtually impossible
-                      for you to reach the heights of your capabilities or make
-                      the money that you want without becoming very good at it.
+                      for you to reach the heights of your capabilities.
                     </p>
                   </CardBody>
                   <CardFooter className="text-center">
                     <Button
                       className="btn-just-icon btn-neutral"
                       color="link"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
                     >
-                      <i className="fa fa-twitter" />
+                      <a target="blank" href="https://www.facebook.com/maihung123">
+                        <i className="fa fa-facebook" />
+                      </a>
                     </Button>
                     <Button
                       className="btn-just-icon btn-neutral ml-1"
                       color="link"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
                     >
-                      <i className="fa fa-google-plus" />
-                    </Button>
-                    <Button
-                      className="btn-just-icon btn-neutral ml-1"
-                      color="link"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fa fa-linkedin" />
+                      <a target="blank" href="https://github.com/maivanhung33/">
+                        <i className="fa fa-github" />
+                      </a>
                     </Button>
                   </CardFooter>
                 </Card>
@@ -209,48 +198,40 @@ function LandingPage() {
                     <a href="#pablo" onClick={e => e.preventDefault()}>
                       <img
                         alt="..."
-                        src={require("assets/img/faces/joe-gardner-2.jpg")}
+                        src={require("assets/img/faces/hung_hoang.jpg")}
                       />
                     </a>
                   </div>
                   <CardBody>
                     <a href="#pablo" onClick={e => e.preventDefault()}>
                       <div className="author">
-                        <CardTitle tag="h4">Sophie West</CardTitle>
-                        <h6 className="card-category">Designer</h6>
+                        <CardTitle tag="h4">Hoang N. Hung</CardTitle>
+                        <h6 className="card-category">BE - Developer</h6>
                       </div>
                     </a>
                     <p className="card-description text-center">
+                      Main language: Python, C++
                       A group becomes a team when each member is sure enough of
                       himself and his contribution to praise the skill of the
-                      others. No one can whistle a symphony. It takes an
-                      orchestra to play it.
+                      others.
                     </p>
                   </CardBody>
                   <CardFooter className="text-center">
                     <Button
                       className="btn-just-icon btn-neutral"
                       color="link"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
                     >
-                      <i className="fa fa-twitter" />
+                      <a target="blank" href="https://www.facebook.com/hunghoang59">
+                        <i className="fa fa-facebook" />
+                      </a>
                     </Button>
                     <Button
                       className="btn-just-icon btn-neutral ml-1"
                       color="link"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
                     >
-                      <i className="fa fa-google-plus" />
-                    </Button>
-                    <Button
-                      className="btn-just-icon btn-neutral ml-1"
-                      color="link"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fa fa-linkedin" />
+                      <a target="blank" href="https://github.com/thinhnnd">
+                        <i className="fa fa-github" />
+                      </a>
                     </Button>
                   </CardFooter>
                 </Card>
@@ -261,15 +242,15 @@ function LandingPage() {
                     <a href="#pablo" onClick={e => e.preventDefault()}>
                       <img
                         alt="..."
-                        src={require("assets/img/faces/erik-lucatero-2.jpg")}
+                        src={require("assets/img/faces/hao_nguyen.jpg")}
                       />
                     </a>
                   </div>
                   <CardBody>
                     <a href="#pablo" onClick={e => e.preventDefault()}>
                       <div className="author">
-                        <CardTitle tag="h4">Robert Orben</CardTitle>
-                        <h6 className="card-category">Developer</h6>
+                        <CardTitle tag="h4">Nguyen T. Hao</CardTitle>
+                        <h6 className="card-category">BE Developer</h6>
                       </div>
                     </a>
                     <p className="card-description text-center">
@@ -283,26 +264,18 @@ function LandingPage() {
                     <Button
                       className="btn-just-icon btn-neutral"
                       color="link"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
                     >
-                      <i className="fa fa-twitter" />
+                      <a target="blank" href="https://www.facebook.com/WestlifeNo2">
+                        <i className="fa fa-facebook" />
+                      </a>
                     </Button>
                     <Button
                       className="btn-just-icon btn-neutral ml-1"
                       color="link"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
                     >
-                      <i className="fa fa-google-plus" />
-                    </Button>
-                    <Button
-                      className="btn-just-icon btn-neutral ml-1"
-                      color="link"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fa fa-linkedin" />
+                      <a target="blank" href="https://github.com/thinhnnd">
+                        <i className="fa fa-github" />
+                      </a>
                     </Button>
                   </CardFooter>
                 </Card>
@@ -313,48 +286,39 @@ function LandingPage() {
                     <a href="#pablo" onClick={e => e.preventDefault()}>
                       <img
                         alt="..."
-                        src={require("assets/img/faces/erik-lucatero-2.jpg")}
+                        src={require("assets/img/faces/thinhnnd.jpg")}
                       />
                     </a>
                   </div>
                   <CardBody>
                     <a href="#pablo" onClick={e => e.preventDefault()}>
                       <div className="author">
-                        <CardTitle tag="h4">Robert Orben</CardTitle>
-                        <h6 className="card-category">Developer</h6>
+                        <CardTitle tag="h4">Nguyen Nie D. Thinh</CardTitle>
+                        <h6 className="card-category">FE Developer</h6>
                       </div>
                     </a>
                     <p className="card-description text-center">
-                      The strength of the team is each individual member. The
-                      strength of each member is the team. If you can laugh
-                      together, you can work together, silence isn’t golden,
-                      it’s deadly.
+                      Skills: NodeJS, ReactJS
+                      Together we will make it better.
+                      Share knowledge is the key to success.
                     </p>
                   </CardBody>
                   <CardFooter className="text-center">
                     <Button
                       className="btn-just-icon btn-neutral"
                       color="link"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
                     >
-                      <i className="fa fa-twitter" />
+                      <a target="blank" href="https://fb.com/nieducthinh">
+                        <i className="fa fa-facebook" />
+                      </a>
                     </Button>
                     <Button
                       className="btn-just-icon btn-neutral ml-1"
                       color="link"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
                     >
-                      <i className="fa fa-google-plus" />
-                    </Button>
-                    <Button
-                      className="btn-just-icon btn-neutral ml-1"
-                      color="link"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fa fa-linkedin" />
+                      <a target="blank" href="https://github.com/thinhnnd">
+                        <i className="fa fa-github" />
+                      </a>
                     </Button>
                   </CardFooter>
                 </Card>
