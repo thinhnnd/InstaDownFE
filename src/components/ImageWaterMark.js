@@ -147,6 +147,7 @@ class ImageWaterMark extends Component {
                                             <InputRange
                                                 className="mt-3"
                                                 minValue={0}
+                                                maxValue={100}
                                                 value={textFontSize}
                                                 onChange={textFontSize => this.setState({ textFontSize })} />
                                         </div>
