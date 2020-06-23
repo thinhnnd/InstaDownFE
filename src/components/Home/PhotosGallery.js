@@ -36,8 +36,10 @@ function PhotosGallery(props) {
     if (props.type == "user") {
       let url = 'https://www.instagram.com/' + props.username;
       console.log(url);
+      props.getOwner(null);
       API_HELPERS.getUserImages(url).then(res => {
         setPhotos(res.data);
+        props.getOwner(res.owner);
         setIsLoading(false);
       }).catch(err => {
         setIsLoading(false);
@@ -47,8 +49,10 @@ function PhotosGallery(props) {
     if (props.type == "post") {
       let url = 'https://www.instagram.com/p/' + props.postId + '/';
       console.log(url);
+      props.getOwner(null);
       API_HELPERS.getPostImage(url).then(res => {
         setPhotos(res.data);
+        props.getOwner(res.owner);
         setIsLoading(false);
       }).catch(err => {
         setIsLoading(false);
@@ -78,7 +82,7 @@ function PhotosGallery(props) {
   };
   return (
     <>
-      <div className="section mt-5">
+      <div className="mt-3 section">
         <Container>
           {isLoading ? <Loading /> : <Gallery className="my-gallery" photos={photos} renderImage={imageRenderer} />}
           {

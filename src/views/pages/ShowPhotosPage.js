@@ -16,7 +16,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React, { useState } from "react";
 
 // reactstrap components
 import {
@@ -43,21 +43,32 @@ import DemoFooter from "components/Footers/DemoFooter.js";
 import MainFooter from "components/Footers/MainFooter";
 import HomeGallery from "components/Home/HomeGallery";
 import PhotosGallery from "components/Home/PhotosGallery";
+import MainLayout from 'container/MainLayout';
+import MainImage from "components/WaterMarkEditor/MainImage";
+import Userinfo from 'components/Profile/UserInfo';
+import UserInfo from "components/Profile/UserInfo";
 
 function UserPage(props) {
   document.documentElement.classList.remove("nav-open");
 
+  const [owner, setOwner] = useState(null);
+
   React.useEffect(() => {
     const param = props.param;
   });
+
+  const handleGetOwner = (owner) => {
+    console.log('owner', owner);
+    setOwner(owner);
+  }
+  
   return (
-    <div className="instadown">
-      <DefaultNavbar />
+    <MainLayout>
       <div className="main">
-        <PhotosGallery type={props.type} username={props.match.params.username} postId={props.match.params.postId} />
-        <MainFooter />
+        { owner ? <UserInfo owner={owner} /> : null}
+        <PhotosGallery getOwner={ (o) => handleGetOwner (o)} type={props.type} username={props.match.params.username} postId={props.match.params.postId} />
      </div>
-    </div>
+    </MainLayout>
   );
 }
 

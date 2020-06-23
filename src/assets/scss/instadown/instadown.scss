@@ -248,6 +248,29 @@ $breakpoint-tablet: 768px;
   .lds-ripple div:nth-child(2) {
     animation-delay: -0.5s;
   }
+
+  .profile-content {
+    padding-bottom: 15px;
+  }
+
+  .gradient-seleneum {
+    background: #3C3B3F;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #605C3C, #3C3B3F);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #605C3C, #3C3B3F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+
+  .gradient-alihossein {
+    background: #f7ff00;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #db36a4, #f7ff00);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #db36a4, #f7ff00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+
+  .gradient-brightvault {
+    background: #00d2ff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #928DAB, #00d2ff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #928DAB, #00d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+
   @keyframes lds-ripple {
     0% {
       top: 36px;

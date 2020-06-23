@@ -27,7 +27,7 @@ import "assets/demo/demo.css";
 // pages
 import Index from "views/Index.js";
 import NucleoIcons from "views/NucleoIcons.js";
-import LandingPage from "views/examples/LandingPage.js";
+import AboutPage from "views/pages/AboutPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
 import RegisterPage from "views/examples/RegisterPage.js";
 import SingleImagePage from "views/pages/SingleImagePage";
@@ -53,7 +53,7 @@ ReactDOM.render(
         />
         <Route
           path="/about"
-          render={props => <LandingPage {...props} />}
+          render={props => <AboutPage {...props} />}
         />
         <Route
           path="/post/:postId"
@@ -71,6 +71,11 @@ ReactDOM.render(
           path="/edit-image"
           
           render={props => <EditImages type="edit-image" {...props} />}
+        />
+        <Route
+          path="/profile"
+          
+          render={props => <ProfilePage type="edit-image" {...props} />}
         />
         <Redirect to="/" />
       </Switch>

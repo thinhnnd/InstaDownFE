@@ -56,12 +56,12 @@ function MainFooter() {
             </ul>
           </nav>
           <div className="teacher-credits">
-            <span>A product of <a href="https://dungtran.top" target="_blank">dungtran.top</a></span>
+            <b>A product of <a href="https://dungtran.top" style={{  fontWeight: 550}} target="_blank">dungtran.top</a></b>
           </div>
           <div className="credits">
             <span className="copyright">
               © {new Date().getFullYear()}, made with{" "}
-              <i className="fa fa-heart heart" /> by Group 08
+              <i className="fa fa-heart heart" /> by <b>Group 08</b>
             </span>
           </div>
         </Row>

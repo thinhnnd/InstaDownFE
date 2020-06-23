@@ -1,29 +1,8 @@
-/*!
-
-=========================================================
-* Paper Kit React - v1.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-kit-react
-
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/paper-kit-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React, { useState } from "react";
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
-import MainFooter from "components/Footers/MainFooter";
 import 'tui-image-editor/dist/tui-image-editor.css';
-import ImageEditor from '@toast-ui/react-image-editor';
 import queryString from 'query-string';
 import ImageWaterMark from "components/ImageWaterMark";
+import MainLayout from 'container/MainLayout';
 
 function EditImages(props) {
 
@@ -47,13 +26,11 @@ function EditImages(props) {
     setSearchInput(e.target.value);
   }
   return (
-    <div className="instadown">
-      <DefaultNavbar searchInput={searchInput} handleSearchChange={ (e) => handleChange(e)} />
+    <MainLayout>
       <div className="main" style={{ marginTop: 100}}>
         <ImageWaterMark mainImageUrl={templateImageUrl} />
-        <MainFooter />
       </div>
-    </div>
+    </MainLayout>
   );
 }
 

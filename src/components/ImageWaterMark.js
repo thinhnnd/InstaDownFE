@@ -86,7 +86,7 @@ class ImageWaterMark extends Component {
         const { stageWidth, stageHeight, textInput, textFontSize, textColor, imageLogoHeight, imageLogoWidth, imageLogoOpacity, textRotation, logoUrl } = this.state;
         console.log('state', this.state);
         return (
-            <div class="layout" >
+            <div className="layout" >
 
                 <div
                     id="canvas-container"

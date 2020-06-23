@@ -42,11 +42,8 @@ function ProfilePageHeader() {
   return (
     <>
       <div
-        style={{
-          backgroundImage:
-            "url(" + require("assets/img/fabio-mangione.jpg") + ")"
-        }}
-        className="page-header page-header-xs"
+
+        className="page-header page-header-xs gradient-brightvault"
         data-parallax={true}
         ref={pageHeader}
       >
@@ -57,3 +54,8 @@ function ProfilePageHeader() {
 }
 
 export default ProfilePageHeader;
+
+// style={{
+//   backgroundImage:
+//     "url(" + require("assets/img/fabio-mangione.jpg") + ")"
+// }}
