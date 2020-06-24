@@ -142,8 +142,7 @@ function IndexNavbar(props) {
             </NavItem>
             <NavItem>
               <NavLink
-                href="https://demos.creative-tim.com/paper-kit-react/#/documentation?ref=pkr-index-navbar"
-                target="_blank"
+                href="/how-to-use"
               >
                 <i className="nc-icon nc-book-bookmark" /> How to use
               </NavLink>

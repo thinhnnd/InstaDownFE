@@ -160,8 +160,7 @@ function DefaultHeader(props) {
             </NavItem>
             <NavItem>
               <NavLink
-                href="/about"
-                target=""
+                href="/how-to-use"
               >
                 <i className="nc-icon nc-book-bookmark" /> How to use
                 </NavLink>
