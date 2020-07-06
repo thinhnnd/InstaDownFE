@@ -231,6 +231,18 @@ $breakpoint-tablet: 768px;
     display: inline-block;
   }
 
+  //login, register 
+    //date-time
+
+  #datetimepicker {
+    .rdtDays, .rdtMonth, .rdtYear {
+      color: #000;
+    }
+    .rdtDays.rdtOld {
+      color: #3c4a50;
+    }
+  }
+
   // loading 
   .lds-ripple {
     display: inline-block;

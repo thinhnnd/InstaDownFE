@@ -3,7 +3,7 @@ import CONFIG from './config';
 
 export const getPostImage = async (postUrl) => {
     try {
-        const res = await axios.post(`${CONFIG.url}/post`, { url: postUrl })
+        const res = await axios.post(`${CONFIG.url}/download/post`, { url: postUrl })
         return res.data;
     }
     catch (err) {

@@ -30,6 +30,7 @@ import NucleoIcons from "views/NucleoIcons.js";
 import AboutPage from "views/pages/AboutPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
 import RegisterPage from "views/examples/RegisterPage.js";
+import LoginPage from "views/examples/LoginPage.js";
 import SingleImagePage from "views/pages/SingleImagePage";
 import { createStore, applyMiddleware } from 'redux';
 import { create } from "nouislider";
@@ -76,6 +77,14 @@ ReactDOM.render(
           path="/profile"
           
           render={props => <ProfilePage type="edit-image" {...props} />}
+        />
+        <Route
+          path="/register"         
+          render={props => <RegisterPage {...props} />}
+        />
+        <Route
+          path="/login"         
+          render={props => <LoginPage {...props} />}
         />
         <Redirect to="/" />
       </Switch>

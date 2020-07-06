@@ -16,53 +16,53 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React, { useState } from "react";
+import React, {useState} from "react";
 
 // reactstrap components
-import { Button, Card, Form, Input, Container, Row, Col, FormGroup, InputGroup, InputGroupAddon, InputGroupText } from "reactstrap";
+import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import ReactDatetime from "react-datetime";
+import { useSelector, useDispatch } from "react-redux";
+import { loginUser, getUserInfo } from '../../store/actions/userAction'
+import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
 import IndexNavbar from "components/Navbars/IndexNavbar";
 
-function RegisterPage() {
+
+function LoginPage(props) {
   document.documentElement.classList.remove("nav-open");
+  const user = useSelector(state => state.user)
   React.useEffect(() => {
+
+    const localToken = localStorage.getItem("token")
+    console.log('use effect', localToken)
+    if(localToken)
+      dispatch(getUserInfo(localToken))
+      if(user)
+        props.history.push('/');
+
     document.body.classList.add("register-page");
     return function cleanup() {
       document.body.classList.remove("register-page");
     };
-  });
 
-  const initialRegData = {
-    fullname:"MaiVanHung",
-    username:"hung",
-    password:"123",
-    birthday:"1234567890",
-    email:"maihung303@gmail.com",
-    phone:"0568899881",
-  }
+  }, []);
+  
+  const dispatch = useDispatch();
 
-  const [fullname, setFullName] = useState('')
-  const [email, setEmail] = useState('')
-  const [birthdate, setBirthDate] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [phone, setPhone] = useState('')
 
-  const handleRegister = () => {
+  const handleLogin = () => {
     const formData = {
-      fullname: fullname,
-      email: email,
-      birthdate: birthdate,
       username: username,
-      passsword: password,
-      phone: phone,
+      password: password,
+
     }
-    console.log(formData)
+    dispatch(loginUser(formData))
+    const localToken = localStorage.getItem("token")
+    dispatch(getUserInfo(localToken))
   }
-  
+
   return (
     <div className="instadown">
       <IndexNavbar />
@@ -77,7 +77,7 @@ function RegisterPage() {
           <Row>
             <Col className="ml-auto mr-auto" lg="4">
               <Card className="card-register ml-auto mr-auto">
-                <h3 className="title mx-auto">Register</h3>
+                <h3 className="title mx-auto">Login</h3>
                 {/* <div className="social-line text-center">
                   <Button
                     className="btn-neutral btn-just-icon mr-1"
@@ -105,61 +105,37 @@ function RegisterPage() {
                   </Button>
                 </div> */}
                 <Form className="register-form">
-                  <label for="fullname">Full Name</label>
-                  <Input name="fullname" placeholder="Full Name" onChange={ e => setFullName(e.target.value) } value={fullname} type="text" />
-                  <label for="birthday">Birth Date</label>
-                  <FormGroup>
-                    <InputGroup className="date" id="datetimepicker">
-                      <ReactDatetime
-                        timeFormat={false}
-                        inputProps={{
-                          placeholder: "Datetime Picker Here"
-                        }}
-                        onChange = { date => setBirthDate(date._d) }
-                      />
-                      <InputGroupAddon addonType="append">
-                        <InputGroupText>
-                          <span className="glyphicon glyphicon-calendar">
-                            <i aria-hidden={true} className="fa fa-calendar" />
-                          </span>
-                        </InputGroupText>
-                      </InputGroupAddon>
-                    </InputGroup>
-                  </FormGroup>  
-                  <label for="email">Email</label>
-                  <Input name="email" placeholder="Email" value={email}  onChange={ e => setEmail(e.target.value) } type="email" />  
-                  <label for="phone">Phone</label>
-                  <Input name="phone" 
-                    placeholder="Phone" 
+                  <label>Username</label>
+                  <Input placeholder="Username" 
                     type="text" 
-                    value={phone}  
-                    onChange={ e => setPhone(e.target.value) } />
-                  <label for="username">Username</label>
-                  <Input name="username" 
-                    placeholder="Username" 
-                    type="text" 
-                    value={username}  
-                    onChange={ e => setUsername(e.target.value) } />
-                  <label for="password">Password</label>
-                  <Input name="password" 
-                    placeholder="Password" 
-                    type="password" 
-                    value={password}  
+                    onChange={ e => setUsername(e.target.value) }/>
+                  <label>Password</label>
+                  <Input placeholder="Password" 
+                    type="password"
                     onChange={ e => setPassword(e.target.value) } />
-                  <Button onClick={ handleRegister} block className="btn-round" color="danger">
-                    Register
+                  <Button onClick={handleLogin} block className="btn-round" color="danger">
+                    login
                   </Button>
                 </Form>
+                <div className="forgot">
                 <Button
                     outline 
                     block
                     className="btn-round "
                     color="success"
-                    href="/login"
+                    href="/register"
                   >
-                    Have account? Login now
+                    Register new account
                   </Button>
-
+                  <Button
+                    className="btn-link"
+                    color="danger"
+                    href="#pablo"
+                    onClick={e => e.preventDefault()}
+                  >
+                    Forgot password?
+                  </Button>
+                </div>
               </Card>
             </Col>
           </Row>
@@ -175,4 +151,4 @@ function RegisterPage() {
   );
 }
 
-export default RegisterPage;
+export default LoginPage;

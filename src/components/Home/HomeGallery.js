@@ -23,7 +23,7 @@ function HomeGallery() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUserPhotoAlbum('https://www.instagram.com/traveljetter/'));
+    dispatch(getUserPhotoAlbum('https://www.instagram.com/__hotgirlvietnam__/'));
   }, []);
   const imageRenderer =
     ({ index, left, top, key, photo }) => (
