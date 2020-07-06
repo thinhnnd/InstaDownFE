@@ -40,8 +40,10 @@ import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
 import MainFooter from "components/Footers/MainFooter";
+import { useSelector, useDispatch } from "react-redux";
 
-function ProfilePage() {
+
+function ProfilePage(props) {
   const [activeTab, setActiveTab] = React.useState("1");
 
   const toggle = tab => {
@@ -49,6 +51,11 @@ function ProfilePage() {
       setActiveTab(tab);
     }
   };
+
+  const auth = useSelector(state => state.auth)
+  console.log('user ', auth)
+  if(!auth.isAuthenticated)
+    props.history.push('/');
 
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {

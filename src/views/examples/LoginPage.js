@@ -23,22 +23,18 @@ import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 
 // core components
 import { useSelector, useDispatch } from "react-redux";
-import { loginUser, getUserInfo } from '../../store/actions/userAction'
+import { loginUser } from '../../store/actions/authAction'
 import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
 import IndexNavbar from "components/Navbars/IndexNavbar";
 
 
 function LoginPage(props) {
   document.documentElement.classList.remove("nav-open");
-  const user = useSelector(state => state.user)
+  const auth = useSelector(state => state.auth)
+  console.log('user ', auth)
+  if(auth.isAuthenticated)
+    props.history.push('/');
   React.useEffect(() => {
-
-    const localToken = localStorage.getItem("token")
-    console.log('use effect', localToken)
-    if(localToken)
-      dispatch(getUserInfo(localToken))
-      if(user)
-        props.history.push('/');
 
     document.body.classList.add("register-page");
     return function cleanup() {
@@ -58,9 +54,10 @@ function LoginPage(props) {
       password: password,
 
     }
+    console.log('login', formData)
     dispatch(loginUser(formData))
-    const localToken = localStorage.getItem("token")
-    dispatch(getUserInfo(localToken))
+    // const localToken = localStorage.getItem("token")
+    // dispatch(getUserInfo(localToken))
   }
 
   return (

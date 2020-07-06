@@ -25,8 +25,14 @@ import { Button, Card, Form, Input, Container, Row, Col, FormGroup, InputGroup, 
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import ReactDatetime from "react-datetime";
 import IndexNavbar from "components/Navbars/IndexNavbar";
+import { useSelector, useDispatch } from "react-redux";
 
-function RegisterPage() {
+function RegisterPage(props) {
+  const auth = useSelector(state => state.auth)
+  console.log('user ', auth)
+  if(auth.isAuthenticated)
+    props.history.push('/');
+
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
     document.body.classList.add("register-page");

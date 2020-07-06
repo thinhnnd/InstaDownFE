@@ -1,5 +1,5 @@
 
-import setAuthHeader from '../utils/setAuthHeader'
+import setAuthHeader from '../../utils/setAuthHeader';
 import API_HELPERS from "api";
 import { GET_ERRORS, SET_CURRENT_USER } from '../constants'
 
@@ -43,9 +43,15 @@ export const setCurrentUser = (data) => {
 	}
 }
 
-export const getCurrentUser = () => dispatch => {
-    API_HELPERS.getUserInfo()
-        .then(res => dispatch(setCurrentUser(res)))
+export const getCurrentUser = () => async dispatch => {
+    try {
+        const user = await API_HELPERS.getUserInfo();
+        console.log('user', user)
+        dispatch(setCurrentUser(user));
+    } catch(err) {
+        console.log('get user err', err);
+    }
+    
 }
 
 export const logoutUser = () => dispatch => {

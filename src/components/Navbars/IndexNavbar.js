@@ -36,10 +36,11 @@ import {
   Button,
   Form
 } from "reactstrap";
-import { useDispatch } from "react-redux";
 import { getUserPhotoAlbum } from "store/actions/searchAction";
 import { useHistory } from "react-router";
 import checkSearchInput from "services/searchServices";
+import { useSelector, useDispatch } from "react-redux";
+
 
 function IndexNavbar(props) {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
@@ -48,7 +49,7 @@ function IndexNavbar(props) {
   const [searchInput, setSearchInput] = useState('');
   const history = useHistory();
   const dispatch = useDispatch()
-
+  const auth = useSelector(state=>state.auth);
   const handleChange = (e) => {
     setSearchInput(e.target.value);
   }
@@ -147,6 +148,19 @@ function IndexNavbar(props) {
                 <i className="nc-icon nc-book-bookmark" /> How to use
               </NavLink>
             </NavItem>
+            { auth.isAuthenticated ? <NavItem> <NavLink
+                href="/user-profile"
+              >
+                 { auth.user.fullname}
+              </NavLink>
+            </NavItem>  : <NavItem>
+              <NavLink
+                href="/login"
+              >
+                Login
+              </NavLink>
+            </NavItem> }
+
           </Nav>
         </Collapse>
       </Container>
