@@ -32,14 +32,15 @@ import rootReducer from "store/reducers/rootReducer";
 
 import { logoutUser, getCurrentUser } from './store/actions/authAction'
 import App from "components/App";
+const {logger} = require('redux-logger')
 // others
 
 const middleware = [thunk];
 
-if (process.env.NODE_ENV !== `production`) {
-  const {logger} = require('redux-logger')
-  middleware.push(logger);
-}
+// if (process.env.NODE_ENV !== `production`) {
+  
+//   middleware.push(logger);
+// }
 
 const store = createStore(rootReducer, applyMiddleware(...middleware))
 
