@@ -26,7 +26,7 @@ function EditImages(props) {
     setSearchInput(e.target.value);
   }
   return (
-    <MainLayout>
+    <MainLayout mainLayoutNav={true} index={false}>
       <div className="main" style={{ marginTop: 100}}>
         <ImageWaterMark mainImageUrl={templateImageUrl} />
       </div>

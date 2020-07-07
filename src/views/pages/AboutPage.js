@@ -43,7 +43,7 @@ function LandingPage() {
     };
   });
   return (
-    <MainLayout>
+    <MainLayout mainLayoutNav={true} index={true}>
       <LandingPageHeader />
       <div className="main">
         <div className="section text-center">

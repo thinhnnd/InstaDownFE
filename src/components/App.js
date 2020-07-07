@@ -7,10 +7,27 @@ import UserPage from "views/pages/ShowPhotosPage";
 import EditImages from "views/pages/EditImages";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import Index from "views/Index.js";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { logoutUser } from 'store/actions/authAction';
+import { getCurrentUser } from 'store/actions/authAction';
 
+import jwt_decode from 'jwt-decode'
+import setAuthHeader from 'utils/setAuthHeader';
 
 export default function App() {
+    const dispatch = useDispatch();
+    if(localStorage.getItem('jwtToken')) {
+        const currentTime = Date.now() / 1000
+        const decode = jwt_decode(localStorage.getItem('jwtToken'))
+      
+        if(currentTime > decode.exp) {
+          dispatch(logoutUser())
+        } else {
+          console.log('userlogin')
+          setAuthHeader(localStorage.getItem('jwtToken'))
+          dispatch(getCurrentUser())
+        }
+      }
     return (
         <BrowserRouter>
             <Switch>

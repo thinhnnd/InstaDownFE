@@ -26,11 +26,17 @@ import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import ReactDatetime from "react-datetime";
 import IndexNavbar from "components/Navbars/IndexNavbar";
 import { useSelector, useDispatch } from "react-redux";
+import { registerUser } from "store/actions/authAction";
+import { useHistory } from "react-router";
+import MainLayout from "container/MainLayout";
+import { Link } from "react-router-dom";
 
 function RegisterPage(props) {
-  const auth = useSelector(state => state.auth)
+  const auth = useSelector(state => state.auth);
+  const dispatch = useDispatch();
+  const history = useHistory();
   console.log('user ', auth)
-  if(auth.isAuthenticated)
+  if (auth.isAuthenticated)
     props.history.push('/');
 
   document.documentElement.classList.remove("nav-open");
@@ -42,12 +48,12 @@ function RegisterPage(props) {
   });
 
   const initialRegData = {
-    fullname:"MaiVanHung",
-    username:"hung",
-    password:"123",
-    birthday:"1234567890",
-    email:"maihung303@gmail.com",
-    phone:"0568899881",
+    fullname: "MaiVanHung",
+    username: "hung",
+    password: "123",
+    birthday: "1234567890",
+    email: "maihung303@gmail.com",
+    phone: "0568899881",
   }
 
   const [fullname, setFullName] = useState('')
@@ -57,21 +63,22 @@ function RegisterPage(props) {
   const [password, setPassword] = useState('')
   const [phone, setPhone] = useState('')
 
-  const handleRegister = () => {
+  const handleRegister = (e) => {
+    e.preventDefault();
     const formData = {
       fullname: fullname,
       email: email,
-      birthdate: birthdate,
+      birthday: birthdate,
       username: username,
-      passsword: password,
+      password: password,
       phone: phone,
     }
     console.log(formData)
+    dispatch(registerUser(formData, history))
   }
-  
+
   return (
-    <div className="instadown">
-      <IndexNavbar />
+    <MainLayout mainLayoutNav={true} index={true} >
       <div
         className="page-header"
         style={{
@@ -110,9 +117,9 @@ function RegisterPage(props) {
                     <i className="fa fa-twitter" />
                   </Button>
                 </div> */}
-                <Form className="register-form">
+                <Form onSubmit={(e) => handleRegister(e)} className="register-form">
                   <label for="fullname">Full Name</label>
-                  <Input name="fullname" placeholder="Full Name" onChange={ e => setFullName(e.target.value) } value={fullname} type="text" />
+                  <Input name="fullname" required placeholder="Full Name" onChange={e => setFullName(e.target.value)} value={fullname} type="text" />
                   <label for="birthday">Birth Date</label>
                   <FormGroup>
                     <InputGroup className="date" id="datetimepicker">
@@ -121,7 +128,7 @@ function RegisterPage(props) {
                         inputProps={{
                           placeholder: "Datetime Picker Here"
                         }}
-                        onChange = { date => setBirthDate(date._d) }
+                        onChange={date => setBirthDate(date._d)}
                       />
                       <InputGroupAddon addonType="append">
                         <InputGroupText>
@@ -131,53 +138,47 @@ function RegisterPage(props) {
                         </InputGroupText>
                       </InputGroupAddon>
                     </InputGroup>
-                  </FormGroup>  
+                  </FormGroup>
                   <label for="email">Email</label>
-                  <Input name="email" placeholder="Email" value={email}  onChange={ e => setEmail(e.target.value) } type="email" />  
+                  <Input name="email" required placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} type="email" />
                   <label for="phone">Phone</label>
-                  <Input name="phone" 
-                    placeholder="Phone" 
-                    type="text" 
-                    value={phone}  
-                    onChange={ e => setPhone(e.target.value) } />
+                  <Input name="phone"
+                    placeholder="Phone"
+                    type="text"
+                    required
+                    value={phone}
+                    onChange={e => setPhone(e.target.value)} />
                   <label for="username">Username</label>
-                  <Input name="username" 
-                    placeholder="Username" 
-                    type="text" 
-                    value={username}  
-                    onChange={ e => setUsername(e.target.value) } />
+                  <Input name="username"
+                    placeholder="Username"
+                    required
+                    type="text"
+                    value={username}
+                    onChange={e => setUsername(e.target.value)} />
                   <label for="password">Password</label>
-                  <Input name="password" 
-                    placeholder="Password" 
-                    type="password" 
-                    value={password}  
-                    onChange={ e => setPassword(e.target.value) } />
-                  <Button onClick={ handleRegister} block className="btn-round" color="danger">
+                  <Input name="password"
+                    placeholder="Password"
+                    required
+                    type="password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)} />
+                  <Button type="submit" block className="btn-round" color="danger">
                     Register
                   </Button>
                 </Form>
-                <Button
-                    outline 
-                    block
-                    className="btn-round "
-                    color="success"
-                    href="/login"
-                  >
-                    Have account? Login now
-                  </Button>
+
+                <Link className="btn-round btn btn-outline-success btn-block btn-block" to={`/login`} >
+                  Have account? Login now
+                </Link>
+
 
               </Card>
             </Col>
           </Row>
         </Container>
-        <div className="footer register-footer text-center">
-          <h6>
-            © {new Date().getFullYear()}, made with{" "}
-            <i className="fa fa-heart heart" /> by Group 08
-          </h6>
-        </div>
+
       </div>
-    </div>
+    </MainLayout>
   );
 }
 

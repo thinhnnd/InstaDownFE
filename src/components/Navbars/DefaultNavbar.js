@@ -57,7 +57,7 @@ function DefaultHeader(props) {
   const [navbarSearch, setNavbarSearch] = React.useState(navSearch);
   const [searchInput, setSearchInput] = useState('');
   const history = useHistory();
-  const auth = useSelector(state=>state.auth);
+  const auth = useSelector(state => state.auth);
   const handleChange = (e) => {
     setSearchInput(e.target.value);
   }
@@ -113,13 +113,14 @@ function DefaultHeader(props) {
     <Navbar className={classnames("fixed-top", navbarColor)} expand="lg">
       <Container>
         <div className="navbar-translate">
-          <NavbarBrand
+          <Link
             data-placement="bottom"
-            href="/"
-            title="InstaDown"
+            className="navbar-brand"
+            to="/index"
+            title="Instadown"
           >
             InstaDown
-            </NavbarBrand>
+          </Link>
           <button
             aria-expanded={navbarCollapse}
             className={classnames("navbar-toggler navbar-toggler", {
@@ -155,13 +156,13 @@ function DefaultHeader(props) {
           <Nav navbar>
             <NavItem>
               <NavLink
-                href="/about"
-                target=""
+                type="button"
+                onClick={(e) => { e.preventDefault(); history.push('/about') }}
               >
                 <i className="nc-icon nc-book-bookmark" /> About Us
-                </NavLink>
+              </NavLink>
             </NavItem>
-            { auth.isAuthenticated ? <UserMenu />  : <LoginSignupMenu /> }
+            {auth.isAuthenticated ? <UserMenu /> : <LoginSignupMenu />}
           </Nav>
         </Collapse>
       </Container>

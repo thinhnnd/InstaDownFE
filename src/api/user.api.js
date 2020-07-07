@@ -32,7 +32,9 @@ export const loginUser = async (loginData) => {
 
 export const registerUser = async (registerData) => {
     try {
-
+        console.log('register data', registerData);
+        const result = await axios.post(`${CONFIG.url}/user/register`, registerData);
+        return result;
     } 
     catch (err) 
     {

@@ -1,22 +1,19 @@
 import React from 'react'
-import { NavItem, NavLink } from 'reactstrap'
+import { NavItem } from 'reactstrap'
+import { Link } from 'react-router-dom'
 
 export default function LoginSignupMenu() {
     return (
         <>
             <NavItem>
-              <NavLink
-                href="/login"
-              >
-                Login
-              </NavLink>
+              <Link className="nav-link" to={`/login`} >
+                  Login
+              </Link>
             </NavItem>
             <NavItem>
-              <NavLink
-                href="/signup"
-              >
-                Sign up
-              </NavLink>
+              <Link className="nav-link" to={`/signup`} >
+                  Signup
+              </Link>
             </NavItem>
         </>
     )

@@ -27,6 +27,7 @@ import { loginUser } from '../../store/actions/authAction'
 import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
 import IndexNavbar from "components/Navbars/IndexNavbar";
 import MainLayout from "container/MainLayout";
+import { Link } from "react-router-dom";
 
 
 function LoginPage(props) {
@@ -49,7 +50,8 @@ function LoginPage(props) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
     const formData = {
       username: username,
       password: password,
@@ -62,7 +64,7 @@ function LoginPage(props) {
   }
 
   return (
-    <MainLayout index={true}>
+    <MainLayout mainLayoutNav={true} index={true}>
       <div
         className="page-header"
         style={{
@@ -101,7 +103,7 @@ function LoginPage(props) {
                     <i className="fa fa-twitter" />
                   </Button>
                 </div> */}
-                <Form className="register-form">
+                <Form className="register-form" onSubmit={ (e) => handleLogin(e)}>
                   <label>Username</label>
                   <Input placeholder="Username" 
                     type="text" 
@@ -110,20 +112,14 @@ function LoginPage(props) {
                   <Input placeholder="Password" 
                     type="password"
                     onChange={ e => setPassword(e.target.value) } />
-                  <Button onClick={handleLogin} block className="btn-round" color="danger">
+                  <Button type="submit"  block className="btn-round" color="danger">
                     login
                   </Button>
                 </Form>
                 <div className="forgot">
-                <Button
-                    outline 
-                    block
-                    className="btn-round "
-                    color="success"
-                    href="/register"
-                  >
-                    Register new account
-                  </Button>
+                  <Link className="btn-round btn btn-outline-success btn-block btn-block" to={`/signup`} >
+                  Register new account
+                  </Link>
                   <Button
                     className="btn-link"
                     color="danger"

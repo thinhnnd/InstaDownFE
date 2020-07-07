@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MainFooter from "components/Footers/MainFooter";
 import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
 import { ToastContainer } from 'react-toastify';
@@ -7,9 +7,29 @@ import IndexNavbar from 'components/Navbars/IndexNavbar';
 
 
 export default function MainLayout(props) {
+    const [searchInput, setSearchInput] = useState('');
+    const handleChange = (e) => {
+      setSearchInput(e.target.value);
+    }
+    
+    document.documentElement.classList.remove("nav-open");
+    React.useEffect(() => {
+      document.body.classList.add("index");
+      return function cleanup() {
+        document.body.classList.remove("index");
+      };
+    });
+
+    let nav = null;
+
+    if(props.mainLayoutNav) {
+        nav = props.index ? <IndexNavbar/> : <DefaultNavbar />
+    }
+
     return (
+        
         <div className="instadown">
-            {props.index ? <IndexNavbar/> : <DefaultNavbar />}
+            {nav}
             {props.children}
             <ToastContainer autoClose={2000} />
             <MainFooter />

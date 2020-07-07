@@ -53,7 +53,7 @@ export default function UserMenu(props) {
                         User Menu
                     </DropdownItem>
                     <DropdownItem
-                        href="/profile"
+                       onClick={(e) => { e.preventDefault(); history.push('/profile') }}
                     >
                         {auth.user.fullname}
                     </DropdownItem>

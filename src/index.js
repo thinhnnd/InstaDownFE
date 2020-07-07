@@ -30,28 +30,13 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import rootReducer from "store/reducers/rootReducer";
-import jwt_decode from 'jwt-decode'
 
 import { logoutUser, getCurrentUser } from './store/actions/authAction'
-import setAuthHeader from './utils/setAuthHeader'
 import logger from 'redux-logger'
 import App from "components/App";
 // others
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger))
-
-if(localStorage.getItem('jwtToken')) {
-  const currentTime = Date.now() / 1000
-  const decode = jwt_decode(localStorage.getItem('jwtToken'))
-
-  if(currentTime > decode.exp) {
-    store.dispatch(logoutUser())
-  } else {
-    console.log('userlogin')
-    setAuthHeader(localStorage.getItem('jwtToken'))
-    store.dispatch(getCurrentUser())
-  }
-}
 
 ReactDOM.render(
   <Provider store={store}>

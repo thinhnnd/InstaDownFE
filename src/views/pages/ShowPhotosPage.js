@@ -63,7 +63,7 @@ function UserPage(props) {
   }
   
   return (
-    <MainLayout>
+    <MainLayout mainLayoutNav={true} index={false}>
       <div className="main">
         { owner ? <UserInfo owner={owner} /> : null}
         <PhotosGallery getOwner={ (o) => handleGetOwner (o)} type={props.type} username={props.match.params.username} postId={props.match.params.postId} />

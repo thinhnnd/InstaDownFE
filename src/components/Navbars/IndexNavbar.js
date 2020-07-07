@@ -42,6 +42,7 @@ import checkSearchInput from "services/searchServices";
 import { useSelector, useDispatch } from "react-redux";
 import UserMenu from "./UserMenu";
 import LoginSignupMenu from "./LoginSignupMenu";
+import { Link } from "react-router-dom";
 
 
 function IndexNavbar(props) {
@@ -95,13 +96,14 @@ function IndexNavbar(props) {
     <Navbar className={classnames("fixed-top", navbarColor)} expand="lg">
       <Container>
         <div className="navbar-translate">
-          <NavbarBrand
+          <Link
             data-placement="bottom"
-            href="/index"
+            className="navbar-brand"
+            to="/index"
             title="Instadown"
           >
             InstaDown
-          </NavbarBrand>
+          </Link>
           <button
             aria-expanded={navbarCollapse}
             className={classnames("navbar-toggler navbar-toggler", {
@@ -137,7 +139,8 @@ function IndexNavbar(props) {
           <Nav navbar>
             <NavItem>
               <NavLink
-                href="/about"
+                type="button"
+               onClick={(e) => { e.preventDefault(); history.push('/about') }}
               >
                 <i className="nc-icon nc-book-bookmark" /> About Us
               </NavLink>

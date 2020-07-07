@@ -69,25 +69,31 @@ function ProfilePage(props) {
     birthday: "1234567890",
     phone: "0568899881",
     email: "maihung303@gmail.com",
-    instaLike: []
+    instaLike: null
   }
 
   let photos= []
 
   if(auth.isAuthenticated){
     user = auth.user
-    photos = user.instaLike.map( item => { 
-      item.width= 240; 
-      item.height= 240; 
-      item.src = item.url;
-      item.thumbnail = item.url;
-      console.log(item)
-      return item
-    })
+    if(user.instaLike != null)
+      if(user.instaLike.length != 0)
+        photos = user.instaLike.filter( item => { 
+          if(item){
+            console.log('item', item)
+
+            item.width= 240; 
+            item.height= 240; 
+            item.src = item.url;
+            item.thumbnail = item.url;
+            return item
+          }
+        })
+        console.log(photos)
   }
     
   return (
-    <MainLayout>
+    <MainLayout mainLayoutNav={true} index={false} >
       <ProfilePageHeader />
       <div className="section profile-content">
         <Container>
@@ -152,8 +158,8 @@ function ProfilePage(props) {
           <TabContent className="" activeTab={activeTab}>
             <TabPane tabId="1" id="follows">
               <Row>
-                <Col className="" md="12">
-                { user.instaLike.length == 0 ? 'You has 0 like photo': <CustomGallery photos={photos} />}
+                <Col className="ml-auto mr-auto text-center" md="12">
+                { photos.length == 0 ? 'You has 0 like photo': <CustomGallery photos={photos} />}
 
                 </Col>
               </Row>

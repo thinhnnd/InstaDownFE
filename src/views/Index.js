@@ -42,6 +42,7 @@ import MainFooter from "components/Footers/MainFooter.js";
 // import SectionDownload from "views/index-sections/SectionDownload.js";
 
 import HomeGallery from "components/Home/HomeGallery";
+import MainLayout from "container/MainLayout";
 
 function Index() {
   const [searchInput, setSearchInput] = useState('');
@@ -57,14 +58,14 @@ function Index() {
     };
   });
   return (
-    <div className="instadown">
+    <MainLayout mainLayoutNav = {false}>
       <IndexNavbar searchInput={searchInput} handleSearchChange={ (e) => handleChange(e)} />
       <IndexHeader searchInput={searchInput} handleSearchChange={ (e) => handleChange(e)} />
       <div className="main">
         <HomeGallery />
-        <MainFooter />
       </div>
-    </div>
+    </MainLayout>
+
   );
 }
 

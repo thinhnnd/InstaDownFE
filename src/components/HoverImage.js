@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import {downloadFromLink} from '../services/downImageFromUrl';
 import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { likeImage } from "../store/actions/authAction";
 
 const imgStyle = {
   transition: "transform .135s cubic-bezier(0.0,0.0,0.2,1),opacity linear .15s"
@@ -27,10 +29,18 @@ const ImageWrapper = ({
   const history = useHistory();
   addWatermark = photo.width < 230 ? false: true;
 
+  const dispatch = useDispatch();
+
   const handleWaterMarkClick = () => {
     history.push(`/edit-image?link=${photo.url}`);
   }
 
+  const auth = useSelector(state => state.auth)
+
+  const handleLike = (e, id,url) => {
+    e.preventDefault();
+    dispatch(likeImage(id, url));
+  }
 
   return (
     <div
@@ -52,9 +62,8 @@ const ImageWrapper = ({
             <span className="fa fa-download"></span>
           </a>
           <a href="#">
-            <span className="fa fa-heart"></span>
+            <span onClick = { (e) => handleLike(e, photo.id, photo.url)  } className="fa fa-heart"></span>
             <span className="ml-2">{photo.countLike}</span>
-
           </a>
 
         </p>

@@ -1,8 +1,9 @@
 
 import setAuthHeader from '../../utils/setAuthHeader';
 import API_HELPERS from "api";
-import { GET_ERRORS, SET_CURRENT_USER } from '../constants'
+import { GET_ERRORS, SET_CURRENT_USER, LIKE_IMAGE, REGISTER_ERROR } from '../constants'
 import { toast } from "react-toastify";
+import { REGISTER } from 'redux-persist/es/constants';
 
 export const loginUser = (userData) => {
     return async (dispatch, getState) => {
@@ -32,11 +33,11 @@ export const registerUser = (userData, history) => {
             history.push('/login')
         } catch(err) {
             console.log('register action', err);
+            toast.warn(err.response.data.message);
             dispatch({
-                type: GET_ERRORS,
+                type: REGISTER_ERROR,
                 payload: err.response.data
             })
-            toast.warn(err.response.data.message);
         }
     }
 }
@@ -65,4 +66,24 @@ export const logoutUser = () => dispatch => {
 	dispatch(setCurrentUser(null))
 }
 
+
+
+export const likeImage = (id, url) => dispatch => {
+    API_HELPERS.likeImage(id, url)
+    .then(res => { 
+        console.log('like res', res);
+        toast.success('Like successfully');
+        dispatch({
+        type: LIKE_IMAGE,
+        payload: {id, url}
+    })
+}).catch(err =>  {
+    dispatch({
+        type: GET_ERRORS,
+        payload: err.messsage
+    })
+    console.log('like error', err.response);
+    toast.warn(err.response.data.message);
+})
+}
 
