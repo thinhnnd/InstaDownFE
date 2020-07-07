@@ -57,13 +57,10 @@ class ImageWaterMark extends Component {
 
     handleDownloadButton = () => {
         var dataURL = this.stageNode.getStage().toDataURL();
-        console.log(dataURL);
         this.downloadURI(dataURL, 'image.jpg');
     }
 
     handleChangeComplete = (color, event) => {
-        console.log('color', color)
-
         let { rgb } = color
         let rgbaColor = `rgba(${rgb.r},${rgb.g},${rgb.b},${rgb.a})`;
 
@@ -79,12 +76,10 @@ class ImageWaterMark extends Component {
             logoUrl: ''
         })
         this.fileInput.value = "";
-        console.log(this.state.logoUrl)
     }
 
     render() {
         const { stageWidth, stageHeight, textInput, textFontSize, textColor, imageLogoHeight, imageLogoWidth, imageLogoOpacity, textRotation, logoUrl } = this.state;
-        console.log('state', this.state);
         return (
             <div className="layout" >
 

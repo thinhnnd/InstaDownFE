@@ -4,7 +4,6 @@ import CONFIG from './config';
 export const getUserImages = async (userUrl) => {
     try {
         const res = await axios.post(`${CONFIG.url}/download/album`, { url: userUrl });
-        console.log('user api', res);
         return res.data;
     }
     catch (err) {
@@ -16,15 +15,12 @@ export const getUserImages = async (userUrl) => {
 
 export const loginUser = async (loginData) => {
     try {
-        console.log('login data', loginData);
         const result = await axios.post(`${CONFIG.url}/user/login`, loginData);
-        console.log('login result data', result);
         return result.data;
     } 
     catch (err) 
     {
         console.log('err axios', err.response)
-
         throw err;
     }
 }
@@ -61,7 +57,6 @@ export const likeImage = async (id, url) => {
             id,
             url
         });
-        console.log('like response data', res);
         return res.data;
     } 
     catch (err) 

@@ -10,7 +10,6 @@ export default function TextLogo({ shapeProps, isSelected, onSelect, onChange, t
     const [x, setX] = useState(50)
     const [y, setY] = useState(50)
 
-    console.log(textFontSize);
     useEffect(() => {
         if (isSelected) {
             // we need to attach transformer manually

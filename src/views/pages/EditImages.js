@@ -16,8 +16,7 @@ function EditImages(props) {
   console.table(link, _nc_cat, _nc_ohc, oh, oe);
 
   const auth = useSelector(state => state.auth)
-  //console.log(props.location)
-
+  
   const [liveDemo, setLiveDemo] = React.useState(!auth.isAuthenticated);
   document.documentElement.classList.remove("nav-open");
 

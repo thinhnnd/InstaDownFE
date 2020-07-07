@@ -21,6 +21,7 @@ import React from "react";
 
 // reactstrap components
 import { Row, Container } from "reactstrap";
+import { Link } from "react-router-dom";
 
 function MainFooter() {
   return (
@@ -30,28 +31,18 @@ function MainFooter() {
           <nav className="footer-nav">
             <ul>
               <li>
-                <a
-                  href="#"
-                  target="_blank"
+                <Link
+                  to="/"
                 >
                   InstaDown
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="https://fb.com/nieducthinh"
-                  target="_blank"
-                >
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/profile-page"
-                  target=""
+                <Link
+                  to="/about/"
                 >
                   About us
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>

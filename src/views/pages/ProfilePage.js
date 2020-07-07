@@ -55,7 +55,6 @@ function ProfilePage(props) {
   };
 
   const auth = useSelector(state => state.auth)
-  console.log('user  profile', auth)
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
     document.body.classList.add("landing-page");
@@ -80,7 +79,6 @@ function ProfilePage(props) {
       if(user.instaLike.length != 0)
         photos = user.instaLike.filter( item => { 
           if(item){
-            console.log('item', item)
 
             item.width= 240; 
             item.height= 240; 
@@ -89,7 +87,6 @@ function ProfilePage(props) {
             return item
           }
         })
-        console.log(photos)
   }
     
   return (

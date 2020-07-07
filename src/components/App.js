@@ -1,13 +1,13 @@
 import React from 'react'
 import AboutPage from "views/pages/AboutPage.js";
-import ProfilePage from "views/examples/ProfilePage.js";
-import RegisterPage from "views/examples/RegisterPage.js";
-import LoginPage from "views/examples/LoginPage.js";
+import ProfilePage from "views/pages/ProfilePage.js";
+import RegisterPage from "views/pages/RegisterPage.js";
+import LoginPage from "views/pages/LoginPage.js";
 import UserPage from "views/pages/ShowPhotosPage";
 import EditImages from "views/pages/EditImages";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import Index from "views/Index.js";
-import { useSelector, useDispatch } from 'react-redux';
+import {useDispatch } from 'react-redux';
 import { logoutUser } from 'store/actions/authAction';
 import { getCurrentUser } from 'store/actions/authAction';
 

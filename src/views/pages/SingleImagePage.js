@@ -14,7 +14,6 @@ import {
 function SingleImagePage(props) {
     let  link = props.match.params.link; 
     const id = props.match.params.id;
-    console.log(id);
 
     return (
         <div className="instadown" style={{ backgroundColor: '#fefefe' }}>

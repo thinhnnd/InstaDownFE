@@ -73,7 +73,7 @@ const ImageWrapper = ({
           <a onClick={ () => { downloadFromLink(photo.url, photo.shortcode) }} >
             <span className="fa fa-download"></span>
           </a>
-          <a href="#">
+          <a>
             <span onClick = { (e) => handleLike(e, photo.id, photo.url)  } className="fa fa-heart"></span>
             <span className="ml-2">{photo.countLike}</span>
           </a>

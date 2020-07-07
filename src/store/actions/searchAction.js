@@ -12,7 +12,7 @@ export const getUserPhotoAlbum = (urlOrUsername) => {
                 photos: result
             })
         } catch(err) {
-            console.log('search action', err);
+            console.log('getUserPhoto error', err);
             
             dispatch({
                 type: 'GET_PHOTOS_ERROR'

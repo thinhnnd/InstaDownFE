@@ -17,30 +17,8 @@
 
 */
 import React, { useState } from "react";
-
-// reactstrap components
-
-// core components
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
-import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
 import IndexHeader from "components/Headers/IndexHeader.js";
-import MainFooter from "components/Footers/MainFooter.js";
-
-// index sections
-// import SectionButtons from "views/index-sections/SectionButtons.js";
-// import SectionNavbars from "views/index-sections/SectionNavbars.js";
-// import SectionNavigation from "views/index-sections/SectionNavigation.js";
-// import SectionProgress from "views/index-sections/SectionProgress.js";
-// import SectionNotifications from "views/index-sections/SectionNotifications.js";
-// import SectionTypography from "views/index-sections/SectionTypography.js";
-// import SectionJavaScript from "views/index-sections/SectionJavaScript.js";
-// import SectionCarousel from "views/index-sections/SectionCarousel.js";
-// import SectionNucleoIcons from "views/index-sections/SectionNucleoIcons.js";
-// import SectionDark from "views/index-sections/SectionDark.js";
-// import SectionLogin from "views/index-sections/SectionLogin.js";
-// import SectionExamples from "views/index-sections/SectionExamples.js";
-// import SectionDownload from "views/index-sections/SectionDownload.js";
-
 import HomeGallery from "components/Home/HomeGallery";
 import MainLayout from "container/MainLayout";
 

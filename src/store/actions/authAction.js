@@ -14,8 +14,7 @@ export const loginUser = (userData) => {
             dispatch(getCurrentUser())
             toast.success("Login success");
         } catch(err) {
-            console.log('login action error', err);
-            
+            console.log('login action error', err);      
             dispatch({
                 type: GET_ERRORS,
                 payload: err.response.data
@@ -32,7 +31,7 @@ export const registerUser = (userData, history) => {
             toast.success("Register success");
             history.push('/login')
         } catch(err) {
-            console.log('register action', err);
+            console.log('register error', err);
             toast.warn(err.response.data.message);
             dispatch({
                 type: REGISTER_ERROR,
@@ -52,7 +51,6 @@ export const setCurrentUser = (data) => {
 export const getCurrentUser = () => async dispatch => {
     try {
         const user = await API_HELPERS.getUserInfo();
-        console.log('user', user)
         dispatch(setCurrentUser(user));
     } catch(err) {
         console.log('get user err', err);

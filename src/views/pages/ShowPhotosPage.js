@@ -58,7 +58,6 @@ function UserPage(props) {
   });
 
   const handleGetOwner = (owner) => {
-    console.log('owner', owner);
     setOwner(owner);
   }
   
