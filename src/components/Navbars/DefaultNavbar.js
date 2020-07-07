@@ -42,6 +42,9 @@ import {
 import { useDispatch } from "react-redux";
 import { getUserPhotoAlbum } from "store/actions/searchAction";
 import checkSearchInput from "services/searchServices";
+import { useSelector } from 'react-redux';
+import UserMenu from "./UserMenu";
+import LoginSignupMenu from "./LoginSignupMenu";
 
 function DefaultHeader(props) {
   let location = window.location.pathname;
@@ -55,9 +58,8 @@ function DefaultHeader(props) {
   const [navbarCollapse, setNavbarCollapse] = React.useState(false);
   const [navbarSearch, setNavbarSearch] = React.useState(navSearch);
   const [searchInput, setSearchInput] = useState('');
-  const dispatch = useDispatch();
   const history = useHistory();
-
+  const auth = useSelector(state=>state.auth);
   const handleChange = (e) => {
     setSearchInput(e.target.value);
   }
@@ -158,13 +160,7 @@ function DefaultHeader(props) {
                 <i className="nc-icon nc-book-bookmark" /> About Us
                 </NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink
-                href="/how-to-use"
-              >
-                <i className="nc-icon nc-book-bookmark" /> How to use
-                </NavLink>
-            </NavItem>
+            { auth.isAuthenticated ? <UserMenu />  : <LoginSignupMenu /> }
           </Nav>
         </Collapse>
       </Container>

@@ -12,18 +12,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { getUserPhotoAlbum } from "store/actions/searchAction";
 import Loading from '../Utils/Loading';
 
-function HomeGallery() {
+function CustomGallery(props) {
 
-  const [photos, setPhotos] = useState(data.data);
-  const [isLoading, setIsLoading] = useState(true);
+  const photoList = props.photos;
   const [currentPhoto, setCurrentPhoto] = useState(data.data[0])
-  const listPhotos = useSelector(state => state.search.photos);
-  const loading = useSelector(state => state.search.isLoading)
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getUserPhotoAlbum('https://www.instagram.com/__hotgirlvietnam__/'));
-  }, []);
   const imageRenderer =
     ({ index, left, top, key, photo }) => (
       <ImageWrapper
@@ -45,12 +38,8 @@ function HomeGallery() {
   };
   return (
     <>
-      <div className="section">
-        <Container>
-          <h3>Selected by Instadown</h3>
-          
-          { loading ? <Loading /> : <Gallery className="my-gallery" photos={listPhotos.data} renderImage={imageRenderer} /> }
-          <Modal isOpen={modal} toggle={toggleModal}>
+        <Gallery className="my-gallery" photos={photoList} renderImage={imageRenderer} />
+        <Modal isOpen={modal} toggle={toggleModal}>
             <div className="modal-header">
               <button
                 aria-label="Close"
@@ -71,7 +60,7 @@ function HomeGallery() {
                   download
                   title="ImageName"
                   className="btn btn-success mr-1"
-                  onClick={ () => { downloadFromLink(currentPhoto.url, currentPhoto.shortcode)}}
+                  onClick={ () => { downloadFromLink(currentPhoto.url, currentPhoto.id)}}
                   download={true}
                 >
                   Download Free
@@ -86,30 +75,9 @@ function HomeGallery() {
 
               </div>
             </div>
-            {/* <div className="modal-footer">
-              <div className="left-side">
-                <Button
-                  className="btn-link"
-                  color="default"
-                  type="button"
-                  onClick={toggleModal}
-                >
-                  Never mind
-                    </Button>
-              </div>
-              <div className="divider" />
-              <div className="right-side">
-                <Button className="btn-round" color="danger" type="button">
-                  Delete
-                </Button>
-              </div>
-            </div> */}
-          </Modal>
-        </Container>
-
-      </div>
+        </Modal>
     </>
   );
 }
 
-export default HomeGallery;
+export default CustomGallery;

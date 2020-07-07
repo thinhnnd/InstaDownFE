@@ -57,7 +57,7 @@ export const getCurrentUser = () => async dispatch => {
 export const logoutUser = () => dispatch => {
 	localStorage.removeItem('jwtToken')
 	setAuthHeader()
-	dispatch(setCurrentUser())
+	dispatch(setCurrentUser(null))
 }
 
 

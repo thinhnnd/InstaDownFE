@@ -40,6 +40,8 @@ import { getUserPhotoAlbum } from "store/actions/searchAction";
 import { useHistory } from "react-router";
 import checkSearchInput from "services/searchServices";
 import { useSelector, useDispatch } from "react-redux";
+import UserMenu from "./UserMenu";
+import LoginSignupMenu from "./LoginSignupMenu";
 
 
 function IndexNavbar(props) {
@@ -48,7 +50,6 @@ function IndexNavbar(props) {
   const [navbarSearch, setNavbarSearch] = React.useState("hide");
   const [searchInput, setSearchInput] = useState('');
   const history = useHistory();
-  const dispatch = useDispatch()
   const auth = useSelector(state=>state.auth);
   const handleChange = (e) => {
     setSearchInput(e.target.value);
@@ -141,25 +142,7 @@ function IndexNavbar(props) {
                 <i className="nc-icon nc-book-bookmark" /> About Us
               </NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink
-                href="/how-to-use"
-              >
-                <i className="nc-icon nc-book-bookmark" /> How to use
-              </NavLink>
-            </NavItem>
-            { auth.isAuthenticated ? <NavItem> <NavLink
-                href="/user-profile"
-              >
-                 { auth.user.fullname}
-              </NavLink>
-            </NavItem>  : <NavItem>
-              <NavLink
-                href="/login"
-              >
-                Login
-              </NavLink>
-            </NavItem> }
+            { auth.isAuthenticated ? <UserMenu />  : <LoginSignupMenu /> }
 
           </Nav>
         </Collapse>

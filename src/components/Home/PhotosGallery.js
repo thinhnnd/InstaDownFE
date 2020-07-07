@@ -17,7 +17,6 @@ function PhotosGallery(props) {
   const [photos, setPhotos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPhoto, setCurrentPhoto] = useState(undefined)
-  let myState = useSelector(state => state);
   const listPhotos = useSelector(state => state.search.photos);
   const loading = useSelector(state => state.search.isLoading)
   const dispatch = useDispatch();
