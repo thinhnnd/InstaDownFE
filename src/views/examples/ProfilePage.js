@@ -158,7 +158,7 @@ function ProfilePage(props) {
           <TabContent className="" activeTab={activeTab}>
             <TabPane tabId="1" id="follows">
               <Row>
-                <Col className="ml-auto mr-auto text-center" md="12">
+                <Col className="ml-auto mr-auto text-center" md={photos.length < 10 ? "8": "12"}>
                 { photos.length == 0 ? 'You has 0 like photo': <CustomGallery photos={photos} />}
 
                 </Col>

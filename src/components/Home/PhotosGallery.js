@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Button, Modal } from "reactstrap";
+import { Container, Button, Modal, Row, Col } from "reactstrap";
 import Gallery from "react-photo-gallery";
 import { data } from "../../test/fakedata";
 import ImageWrapper from "components/HoverImage";
@@ -83,7 +83,10 @@ function PhotosGallery(props) {
     <>
       <div className="mt-3 section">
         <Container>
-          {isLoading ? <Loading /> : <Gallery className="my-gallery" photos={photos} renderImage={imageRenderer} />}
+          <Row>
+            <Col className="ml-auto mr-auto text-center" md={photos.length < 10 ? "8": "12"}>
+              {isLoading ? <Loading /> : <Gallery className="my-gallery" photos={photos} renderImage={imageRenderer} />}
+            </Col>
           {
             !currentPhoto ? null : <Modal isOpen={modal} toggle={toggleModal}>
               <div className="modal-header">
@@ -141,7 +144,7 @@ function PhotosGallery(props) {
               </div> */}
             </Modal>
           }
-
+          </Row>
         </Container>
 
       </div>
