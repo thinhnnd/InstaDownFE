@@ -28,11 +28,10 @@ export const registerUser = (userData, history) => {
     return async (dispatch, getState) => {
         try {
             let result = await API_HELPERS.registerUser(userData);
-            toast.success("Register success");
             setTimeout(()=> { 
                 history.push('/login')
             }, 2000);
-            
+            toast.success("Register success");
         } catch(err) {
             console.log('register error', err);
             toast.warn(err.response.data.message);
