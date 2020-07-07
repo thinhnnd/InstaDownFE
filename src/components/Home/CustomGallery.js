@@ -3,7 +3,7 @@ import { Button, Modal } from "reactstrap";
 import Gallery from "react-photo-gallery";
 import { data } from "../../test/fakedata";
 import ImageWrapper from "components/HoverImage";
-import {downloadFromLink} from "services/downImageFromUrl";
+import {downloadFromLink, downloadFromLinkWithWatermark} from "services/downImageFromUrl";
 
 function CustomGallery(props) {
 
@@ -22,6 +22,8 @@ function CustomGallery(props) {
         handleClick={(photo) => { setCurrentPhoto(photo); toggleModal(); }}
       />
     );
+
+    
 
   const [modal, setModal] = React.useState(false);
   const toggleModal = () => {
@@ -51,7 +53,7 @@ function CustomGallery(props) {
                   download
                   title="ImageName"
                   className="btn btn-success mr-1"
-                  onClick={ () => { downloadFromLink(currentPhoto.url, currentPhoto.id)}}
+                  onClick={ () => { downloadFromLinkWithWatermark(currentPhoto.url, currentPhoto.id)}}
                   download={true}
                 >
                   Download Free

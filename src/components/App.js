@@ -56,7 +56,7 @@ export default function App() {
                 <Route
                     path="/profile"
 
-                    render={props => <ProfilePage type="edit-image" {...props} />}
+                    render={props => <ProfilePage {...props} />}
                 />
                 <Route
                     path="/signup"

@@ -69,7 +69,7 @@ function PhotosGallery(props) {
         photo={photo}
         left={left}
         top={top}
-        handleClick={(photo) => { console.log('photo 53', photo); setCurrentPhoto(photo); toggleModal(); }}
+        handleClick={(photo) => { setCurrentPhoto(photo); toggleModal(); }}
       />
     );
 
