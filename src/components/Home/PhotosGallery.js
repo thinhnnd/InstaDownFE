@@ -84,7 +84,7 @@ function PhotosGallery(props) {
       <div className="mt-3 section">
         <Container>
           <Row>
-            <Col className="ml-auto mr-auto text-center" md={photos.length < 10 ? "8": "12"}>
+            <Col className="ml-auto mr-auto text-center" md={photos.length < 5 ? "6": "8"}>
               {isLoading ? <Loading /> : <Gallery className="my-gallery" photos={photos} renderImage={imageRenderer} />}
             </Col>
           {
