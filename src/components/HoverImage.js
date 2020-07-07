@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import downloadFromLink from '../services/downImageFromUrl';
+import {downloadFromLink} from '../services/downImageFromUrl';
 import { useHistory } from "react-router-dom";
 
 const imgStyle = {

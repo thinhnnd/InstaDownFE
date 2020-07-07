@@ -23,6 +23,8 @@ export const loginUser = async (loginData) => {
     } 
     catch (err) 
     {
+        console.log('err axios', err.response)
+
         throw err;
     }
 }
@@ -45,6 +47,7 @@ export const getUserInfo = async () => {
     } 
     catch (err) 
     {
+        console.log('err axios', err.response)
         throw err;
     }
 }

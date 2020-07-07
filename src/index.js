@@ -25,25 +25,17 @@ import "assets/css/bootstrap.min.css";
 import "assets/scss/paper-kit.scss";
 import "assets/demo/demo.css";
 // pages
-import Index from "views/Index.js";
-import NucleoIcons from "views/NucleoIcons.js";
-import AboutPage from "views/pages/AboutPage.js";
-import ProfilePage from "views/examples/ProfilePage.js";
-import RegisterPage from "views/examples/RegisterPage.js";
-import LoginPage from "views/examples/LoginPage.js";
-import SingleImagePage from "views/pages/SingleImagePage";
+
 import { createStore, applyMiddleware } from 'redux';
-import { create } from "nouislider";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import rootReducer from "store/reducers/rootReducer";
-import UserPage from "views/pages/ShowPhotosPage";
-import EditImages from "views/pages/EditImages";
 import jwt_decode from 'jwt-decode'
 
 import { logoutUser, getCurrentUser } from './store/actions/authAction'
 import setAuthHeader from './utils/setAuthHeader'
 import logger from 'redux-logger'
+import App from "components/App";
 // others
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger))
@@ -63,46 +55,7 @@ if(localStorage.getItem('jwtToken')) {
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/" render={props => <Index {...props} />} />
-        <Route
-          path="/about"
-          render={props => <AboutPage {...props} />}
-        />
-        <Route
-          path="/post/:postId"
-          render={props => <UserPage type="post" {...props} />}
-        />
-        <Route
-          path="/register-page"
-          render={props => <RegisterPage {...props} />}
-        />
-        <Route
-          path="/user/:username"
-          render={props => <UserPage type="user" {...props} />}
-        />
-        <Route
-          path="/edit-image"
-          
-          render={props => <EditImages type="edit-image" {...props} />}
-        />
-        <Route
-          path="/profile"
-          
-          render={props => <ProfilePage type="edit-image" {...props} />}
-        />
-        <Route
-          path="/signup"         
-          render={props => <RegisterPage {...props} />}
-        />
-        <Route
-          path="/login"         
-          render={props => <LoginPage {...props} />}
-        />
-        <Redirect to="/" />
-      </Switch>
-    </BrowserRouter>
+    <App />
   </Provider>,
   document.getElementById("root")
 );

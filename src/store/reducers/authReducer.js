@@ -14,7 +14,7 @@ export default function (state = initialState, action) {
             console.log('SET CURRENT USER', action.payload)
 			return {
 				...state,
-				isAuthenticated: Object.keys(action.payload).length !== 0,
+				isAuthenticated: action.payload ? true : false,
 				user: action.payload
 			}
 		case LIKE_IMAGE:

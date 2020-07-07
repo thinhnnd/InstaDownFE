@@ -2,7 +2,7 @@
 import setAuthHeader from '../../utils/setAuthHeader';
 import API_HELPERS from "api";
 import { GET_ERRORS, SET_CURRENT_USER } from '../constants'
-
+import { toast } from "react-toastify";
 
 export const loginUser = (userData) => {
     return async (dispatch, getState) => {
@@ -11,12 +11,15 @@ export const loginUser = (userData) => {
             localStorage.setItem("jwtToken", result.token)
             setAuthHeader(result.token)
             dispatch(getCurrentUser())
+            toast.success("Login success");
         } catch(err) {
             console.log('login action error', err);
+            
             dispatch({
                 type: GET_ERRORS,
                 payload: err.response.data
             })
+            toast.warn(err.response.data.message);
         }
     }
 }
@@ -25,6 +28,7 @@ export const registerUser = (userData, history) => {
     return async (dispatch, getState) => {
         try {
             let result = await API_HELPERS.registerUser(userData);
+            toast.success("Register success");
             history.push('/login')
         } catch(err) {
             console.log('register action', err);
@@ -32,6 +36,7 @@ export const registerUser = (userData, history) => {
                 type: GET_ERRORS,
                 payload: err.response.data
             })
+            toast.warn(err.response.data.message);
         }
     }
 }

@@ -4,7 +4,7 @@ import Gallery from "react-photo-gallery";
 import { data } from "../../test/fakedata";
 import ImageWrapper from "components/HoverImage";
 import axios from 'axios';
-import downloadFromLink from "services/downImageFromUrl";
+import {downloadFromLink} from "services/downImageFromUrl";
 import { CONSTANTS } from '../../constants';
 
 import API_HELPERS from '../../api';

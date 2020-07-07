@@ -119,7 +119,6 @@ function ProfilePage(props) {
           </Row>
           <br />
           <div>
-          { user.instaLike.length == 0 ? 'You has 0 like photo': <CustomGallery photos={photos} />}
 
           </div>
           <div className="nav-tabs-navigation">
@@ -150,11 +149,12 @@ function ProfilePage(props) {
           </div>
 
           {/* Tab panes */}
-          <TabContent className="following" activeTab={activeTab}>
+          <TabContent className="" activeTab={activeTab}>
             <TabPane tabId="1" id="follows">
               <Row>
                 <Col className="" md="12">
-                    
+                { user.instaLike.length == 0 ? 'You has 0 like photo': <CustomGallery photos={photos} />}
+
                 </Col>
               </Row>
             </TabPane>

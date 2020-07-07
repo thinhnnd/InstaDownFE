@@ -1,4 +1,6 @@
 import API_HELPERS from "api"
+import { toast } from "react-toastify";
+
 
 export const getUserPhotoAlbum = (urlOrUsername) => {
     return async (dispatch, getState) => {
@@ -11,9 +13,11 @@ export const getUserPhotoAlbum = (urlOrUsername) => {
             })
         } catch(err) {
             console.log('search action', err);
+            
             dispatch({
                 type: 'GET_PHOTOS_ERROR'
             })
+            toast.warn(err.response.data.message);
         }
     }
 }

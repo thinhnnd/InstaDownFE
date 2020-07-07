@@ -14,12 +14,19 @@ import {
     Row,
     Col,
   } from "reactstrap";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { logoutUser, getCurrentUser } from '../../store/actions/authAction';
+
 
 export default function UserMenu(props) {
 
     const auth = useSelector( state => state.auth)
+    const dispatch = useDispatch();
+
+    const handleLogout = (e) => {
+        dispatch(logoutUser())
+    }
     const history = useHistory();
 
     return (
@@ -52,8 +59,7 @@ export default function UserMenu(props) {
                     </DropdownItem>
                     <DropdownItem divider />
                     <DropdownItem
-                        href="#pablo"
-                        onClick={(e) => e.preventDefault()}
+                        onClick={(e) => { e.preventDefault(); handleLogout(e) }}
                     >
                         Logout
                         </DropdownItem>

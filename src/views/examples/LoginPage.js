@@ -26,6 +26,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { loginUser } from '../../store/actions/authAction'
 import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
 import IndexNavbar from "components/Navbars/IndexNavbar";
+import MainLayout from "container/MainLayout";
 
 
 function LoginPage(props) {
@@ -61,8 +62,7 @@ function LoginPage(props) {
   }
 
   return (
-    <div className="instadown">
-      <IndexNavbar />
+    <MainLayout index={true}>
       <div
         className="page-header"
         style={{
@@ -137,14 +137,14 @@ function LoginPage(props) {
             </Col>
           </Row>
         </Container>
-        <div className="footer register-footer text-center">
+        {/* <div className="footer register-footer text-center">
           <h6>
             © {new Date().getFullYear()}, made with{" "}
             <i className="fa fa-heart heart" /> by Group 08
           </h6>
-        </div>
+        </div> */}
       </div>
-    </div>
+    </MainLayout>
   );
 }
 

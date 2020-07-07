@@ -39,7 +39,6 @@ import {
   FormGroup,
   Form
 } from "reactstrap";
-import { useDispatch } from "react-redux";
 import { getUserPhotoAlbum } from "store/actions/searchAction";
 import checkSearchInput from "services/searchServices";
 import { useSelector } from 'react-redux';
@@ -50,7 +49,6 @@ function DefaultHeader(props) {
   let location = window.location.pathname;
   let nav = "";
   let navSearch = "";
-
   location.includes("index") ? nav = "navbar-transparent" : nav = "";
   location.includes("index") ? navSearch = "hide" : navSearch = "show";
 
@@ -64,6 +62,7 @@ function DefaultHeader(props) {
     setSearchInput(e.target.value);
   }
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (props.searchInput != '') {
@@ -71,6 +70,8 @@ function DefaultHeader(props) {
       checkSearchInput(history, searchInput);
     }
   }
+
+
 
   const toggleNavbarCollapse = () => {
     setNavbarCollapse(!navbarCollapse);
