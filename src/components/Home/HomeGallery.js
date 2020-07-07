@@ -3,19 +3,15 @@ import { Container, Button, Modal } from "reactstrap";
 import Gallery from "react-photo-gallery";
 import { data } from "../../test/fakedata";
 import ImageWrapper from "components/HoverImage";
-import axios from 'axios';
 import {downloadFromLink} from "services/downImageFromUrl";
-import { CONSTANTS } from '../../constants';
-
-import API_HELPERS from '../../api';
 import { useSelector, useDispatch } from "react-redux";
 import { getUserPhotoAlbum } from "store/actions/searchAction";
 import Loading from '../Utils/Loading';
 
 function HomeGallery() {
 
-  const [photos, setPhotos] = useState(data.data);
-  const [isLoading, setIsLoading] = useState(true);
+  //const [photos, setPhotos] = useState(data.data);
+  //const [isLoading, setIsLoading] = useState(true);
   const [currentPhoto, setCurrentPhoto] = useState(data.data[0])
   const listPhotos = useSelector(state => state.search.photos);
   const loading = useSelector(state => state.search.isLoading)
@@ -27,7 +23,7 @@ function HomeGallery() {
   const imageRenderer =
     ({ index, left, top, key, photo }) => (
       <ImageWrapper
-        key={key}
+        key={photo.id}
         margin={"2px"}
         index={index}
         photo={photo}

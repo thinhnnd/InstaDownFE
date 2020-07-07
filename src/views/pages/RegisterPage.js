@@ -22,9 +22,7 @@ import React, { useState } from "react";
 import { Button, Card, Form, Input, Container, Row, Col, FormGroup, InputGroup, InputGroupAddon, InputGroupText } from "reactstrap";
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import ReactDatetime from "react-datetime";
-import IndexNavbar from "components/Navbars/IndexNavbar";
 import { useSelector, useDispatch } from "react-redux";
 import { registerUser } from "store/actions/authAction";
 import { useHistory } from "react-router";

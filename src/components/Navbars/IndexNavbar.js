@@ -22,7 +22,6 @@ import classnames from "classnames";
 // reactstrap components
 import {
   Collapse,
-  NavbarBrand,
   Navbar,
   NavItem,
   NavLink,
@@ -31,15 +30,12 @@ import {
   InputGroup,
   InputGroupAddon,
   Input,
-  InputGroupText,
-  FormGroup,
   Button,
   Form
 } from "reactstrap";
-import { getUserPhotoAlbum } from "store/actions/searchAction";
 import { useHistory } from "react-router";
 import checkSearchInput from "services/searchServices";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import UserMenu from "./UserMenu";
 import LoginSignupMenu from "./LoginSignupMenu";
 import { Link } from "react-router-dom";

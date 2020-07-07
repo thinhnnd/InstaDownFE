@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import MainFooter from "components/Footers/MainFooter";
 import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
 import { ToastContainer } from 'react-toastify';
@@ -7,10 +7,6 @@ import IndexNavbar from 'components/Navbars/IndexNavbar';
 
 
 export default function MainLayout(props) {
-    const [searchInput, setSearchInput] = useState('');
-    const handleChange = (e) => {
-      setSearchInput(e.target.value);
-    }
     
     document.documentElement.classList.remove("nav-open");
     React.useEffect(() => {

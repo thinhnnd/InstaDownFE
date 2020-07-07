@@ -25,18 +25,15 @@ import classnames from "classnames";
 // reactstrap components
 import {
   Collapse,
-  NavbarBrand,
   Navbar,
   NavItem,
   NavLink,
   Nav,
   Container,
-  InputGroupText,
   InputGroupAddon,
   InputGroup,
   Input,
   Button,
-  FormGroup,
   Form
 } from "reactstrap";
 import { getUserPhotoAlbum } from "store/actions/searchAction";

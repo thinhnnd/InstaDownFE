@@ -24,8 +24,6 @@ import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 // core components
 import { useSelector, useDispatch } from "react-redux";
 import { loginUser } from '../../store/actions/authAction'
-import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
-import IndexNavbar from "components/Navbars/IndexNavbar";
 import MainLayout from "container/MainLayout";
 import { Link } from "react-router-dom";
 

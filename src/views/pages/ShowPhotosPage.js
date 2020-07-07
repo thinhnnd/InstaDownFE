@@ -19,33 +19,11 @@
 import React, { useState } from "react";
 
 // reactstrap components
-import {
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardTitle,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Container,
-  Row,
-  Col
-} from "reactstrap";
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
-import LandingPageHeader from "components/Headers/LandingPageHeader.js";
-import DemoFooter from "components/Footers/DemoFooter.js";
-import MainFooter from "components/Footers/MainFooter";
-import HomeGallery from "components/Home/HomeGallery";
+
 import PhotosGallery from "components/Home/PhotosGallery";
 import MainLayout from 'container/MainLayout';
-import MainImage from "components/WaterMarkEditor/MainImage";
-import Userinfo from 'components/Profile/UserInfo';
 import UserInfo from "components/Profile/UserInfo";
 
 function UserPage(props) {

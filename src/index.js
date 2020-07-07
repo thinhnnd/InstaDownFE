@@ -18,7 +18,6 @@
 */
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
 // styles
 import "assets/css/bootstrap.min.css";
@@ -32,11 +31,17 @@ import { Provider } from "react-redux";
 import rootReducer from "store/reducers/rootReducer";
 
 import { logoutUser, getCurrentUser } from './store/actions/authAction'
-import logger from 'redux-logger'
 import App from "components/App";
 // others
 
-const store = createStore(rootReducer, applyMiddleware(thunk, logger))
+const middleware = [thunk];
+
+if (process.env.NODE_ENV !== `prod`) {
+  const {logger} = require('redux-logger')
+  middleware.push(logger);
+}
+
+const store = createStore(rootReducer, applyMiddleware(...middleware))
 
 ReactDOM.render(
   <Provider store={store}>

@@ -1,4 +1,3 @@
-import { useHistory } from "react-router";
 import isInstagramUsername from "./usernameRegexService";
 
 const checkSearchInput = (history, searchInput) => {

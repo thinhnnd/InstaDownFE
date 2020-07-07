@@ -22,17 +22,12 @@ import React from "react";
 // reactstrap components
 import {
   Container,
-  FormGroup,
   Input,
-  Label,
   InputGroup,
   InputGroupAddon,
-  InputGroupText,
   Button,
   Form
 } from "reactstrap";
-import { useDispatch } from "react-redux";
-import { getUserPhotoAlbum } from "store/actions/searchAction";
 import { useHistory } from "react-router";
 import checkSearchInput from "services/searchServices";
 
@@ -41,7 +36,6 @@ import checkSearchInput from "services/searchServices";
 
 function IndexHeader(props) {
 
-  const dispatch = useDispatch();
   const history = useHistory();
 
   // const checkSearchInput = (searchInput) => {
