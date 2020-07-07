@@ -32,7 +32,7 @@ import rootReducer from "store/reducers/rootReducer";
 
 import { logoutUser, getCurrentUser } from './store/actions/authAction'
 import App from "components/App";
-const {logger} = require('redux-logger')
+//import logger = from('redux-logger')
 // others
 
 const middleware = [thunk];
