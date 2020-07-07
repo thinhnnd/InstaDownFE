@@ -3,7 +3,7 @@ import { Container, Button, Modal } from "reactstrap";
 import Gallery from "react-photo-gallery";
 import { data } from "../../test/fakedata";
 import ImageWrapper from "components/HoverImage";
-import {downloadFromLink} from "services/downImageFromUrl";
+import {downloadFromLink, downloadFromLinkWithWatermark} from "services/downImageFromUrl";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserPhotoAlbum } from "store/actions/searchAction";
 import Loading from '../Utils/Loading';
@@ -67,7 +67,7 @@ function HomeGallery() {
                   download
                   title="ImageName"
                   className="btn btn-success mr-1"
-                  onClick={ () => { downloadFromLink(currentPhoto.url, currentPhoto.shortcode)}}
+                  onClick={ () => { downloadFromLinkWithWatermark(currentPhoto.url, currentPhoto.shortcode)}}
                   download={true}
                 >
                   Download Free

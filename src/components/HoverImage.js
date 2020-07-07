@@ -1,5 +1,5 @@
 import React from "react";
-import {downloadFromLink} from '../services/downImageFromUrl';
+import {downloadFromLink, downloadFromLinkWithWatermark} from '../services/downImageFromUrl';
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { likeImage } from "../store/actions/authAction";
@@ -70,7 +70,7 @@ const ImageWrapper = ({
         <h2 style={!addWatermark? { display: "none" }: {}} onClick={ (e) => handleWaterMarkClick (e)}  className="btn-add-wm"><span className="fa fa-edit"></span> Edit</h2>
         <h2 style={addWatermark? { display: "none" }: {}} onClick={ (e) => handleWaterMarkClick (e)} className="btn-add-wm"><span className="fa fa-edit"></span></h2>
         <p className="icon-links">
-          <a onClick={ () => { downloadFromLink(photo.url, photo.shortcode) }} >
+          <a onClick={ () => { downloadFromLinkWithWatermark(photo.url, photo.shortcode) }} >
             <span className="fa fa-download"></span>
           </a>
           <a>
