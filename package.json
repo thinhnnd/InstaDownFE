@@ -7,6 +7,7 @@
     "axios": "^0.19.2",
     "classnames": "2.2.6",
     "downloadjs": "^1.4.7",
+    "express": "^4.17.1",
     "jwt-decode": "^2.2.0",
     "konva": "^6.0.0",
     "moment": "2.24.0",
@@ -33,7 +34,8 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts build && node server.js",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

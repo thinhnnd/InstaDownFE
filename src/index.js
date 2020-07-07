@@ -36,7 +36,7 @@ import App from "components/App";
 
 const middleware = [thunk];
 
-if (process.env.NODE_ENV !== `prod`) {
+if (process.env.NODE_ENV !== `production`) {
   const {logger} = require('redux-logger')
   middleware.push(logger);
 }
