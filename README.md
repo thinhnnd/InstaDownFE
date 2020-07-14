@@ -1,6 +1,6 @@
 # Instadown Front-end
 
-Instadown Front-end là một phần đồ án môn học của nhóm 08, môn lập trình Ứng dụng web  NT208.K21.ANTT do thầy Trần Tuấn Dũng Hướng dẫn.
+Instadown Front-end là một phần đồ án môn học của nhóm 08, môn lập trình Ứng dụng web  NT208.K21.ANTT do thầy Trần Tuấn Dũng hướng dẫn.
 
 ## Yêu cầu đồ án
  Xây dựng ứng dụng web có khả năng crawl ảnh từ instagarm, ngoài ra còn có chức năng tìm kiếm hình ảnh bằng username, post, chức năng add watermark cho ảnh.
