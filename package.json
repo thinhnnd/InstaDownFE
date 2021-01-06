@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@toast-ui/react-image-editor": "^1.2.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "classnames": "2.2.6",
     "downloadjs": "^1.4.7",
     "express": "^4.17.1",
