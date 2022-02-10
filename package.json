@@ -11,7 +11,7 @@
     "jwt-decode": "^2.2.0",
     "konva": "^6.0.0",
     "moment": "2.24.0",
-    "node-sass": "4.12.0",
+    "node-sass": "7.0.0",
     "nouislider": "13.1.5",
     "query-string": "^6.12.1",
     "react": "16.8.6",
